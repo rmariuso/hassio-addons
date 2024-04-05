@@ -1,0 +1,33 @@
+{
+    "name": "Hotspot wifi",
+    "version": "dev",
+    "slug": "hotspot_wifi", 
+    "description": "Addon Hotspot wifi with raspap-webgui",
+    "url": "https://github.com/ArminasTV/Hassio-addons/tree/master/hotspot_wifi",
+    "startup": "system",
+    "panel_icon": "mdi:router-wireless",
+    "arch": [
+      "aarch64",
+      "amd64",
+      "armv7"
+    ],
+    "map": ["addon_config:rw"],
+    "ingress": true,
+    "init": false,
+    "boot": "auto",
+    "hassio_api": true,
+    "homeassistant_api": true,
+    "host_network": true,
+    "privileged": [
+      "SYS_ADMIN",
+      "NET_ADMIN"
+    ],
+    "options": { 
+      "client_internet_access": true,
+      "language": "English"
+    },
+    "schema": { 
+      "client_internet_access": "bool",
+      "language": "list(English|Deutsch|Español|Français|Italiano|Română)"
+    }
+  }
