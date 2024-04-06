@@ -1,8 +1,8 @@
 {
-    "name": "Home Assistant wifiAP",
+    "name": "Home Assistant WiFi AP",
     "version": "dev",
-    "slug": "hotspot_wifi", 
-    "description": "Addon wifiAP based on raspap-webgui",
+    "slug": "wifiap_ha", 
+    "description": "Create a WiFi AP based on raspap-webgui",
     "url": "https://github.com/rmariuso/hassio-addons/tree/master/wifiAP_HA",
     "startup": "system",
     "panel_icon": "mdi:router-wireless",
