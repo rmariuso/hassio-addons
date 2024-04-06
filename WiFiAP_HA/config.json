@@ -3,7 +3,7 @@
     "version": "dev",
     "slug": "wifiap_ha", 
     "description": "Create a WiFi AP based on raspap-webgui",
-    "url": "https://github.com/rmariuso/hassio-addons/WiFiAP_HA",
+    "url": "https://github.com/rmariuso/hassio-addons/tree/main/WiFiAP_HA",
     "startup": "system",
     "panel_icon": "mdi:router-wireless",
     "arch": [
