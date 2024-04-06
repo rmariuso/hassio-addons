@@ -1,14 +1,10 @@
 #!/usr/bin/with-contenv bashio
-# ==============================================================================
-# Home Assistant Community Add-on: Pi-hole
-# Runs the hostapd daemon
-# ==============================================================================
 
-# Run dnsmasq
+# Run Init
 bashio::log.info "Init..."  
 declare DIR 
 declare DIR_RASPAP
-DIR="/config/hotspot_wifi"
+DIR="/config/wifiap_ha"
 DIR_RASPAP="${DIR}/raspap"
 LANG="$(bashio::config 'language')"
 # Ensure configuration exists

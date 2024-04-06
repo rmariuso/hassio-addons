@@ -1,9 +1,7 @@
 #!/usr/bin/with-contenv bashio
-# ==============================================================================
-# Home Assistant Community Add-on: Pi-hole
+
 # Runs the dnsmasq 
-# ==============================================================================
-DIR="/config/hotspot_wifi"
+DIR="/config/wifiap_ha"
 # DIR_RASPAP="${DIR}/raspap"
 CONFIG="${DIR}/dnsmasq/090_raspap.conf" 
 
