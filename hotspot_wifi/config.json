@@ -6,7 +6,7 @@
     "url": "https://github.com/ArminasTV/Hassio-addons/tree/master/hotspot_wifi",
     "webui": "[PROTO:ssl]://[HOST]:[PORT:80]",
     "startup": "application",
-    "arch": ["armv7"],
+    "arch": ["aarch64"],
     "map": ["config:rw"],
     "ports": { 
       "80/tcp": 80
