@@ -18,7 +18,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 #RUN git clone --branch 2.9.4 https://github.com/RaspAP/raspap-webgui /var/www/html 
  
 #COPY /rootfs / 
-WORKDIR /data
+#WORKDIR /data
 COPY run.sh /
 RUN chmod a+x /run.sh
 
