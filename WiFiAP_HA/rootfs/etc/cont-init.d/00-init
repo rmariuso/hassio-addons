@@ -45,7 +45,7 @@ if ! bashio::fs.directory_exists "${DIR}"; then
 fi
 
 mv /etc/config.php /var/www/html/includes/
-mv /var/www/html/app/icons/* /var/www/html
+#mv /var/www/html/app/icons/* /var/www/html
 
 case $LANG in
     Deutsch) 
