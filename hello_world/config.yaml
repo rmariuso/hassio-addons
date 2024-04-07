@@ -7,3 +7,4 @@ arch:
   - amd64
   - armv7
 init: false
+host_network: true
