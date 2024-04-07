@@ -8,4 +8,5 @@ arch:
   - armv7
 init: false
 host_network: true
-map: "addon_config:rw"
+map: 
+  - addon_config:rw
