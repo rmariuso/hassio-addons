@@ -3,23 +3,23 @@ version: dev
 slug: wifiap_ha 
 description: Create a WiFi AP based on raspap-webgui
 url: https://github.com/rmariuso/hassio-addons/tree/main/WiFiAP_HA
-startup: services
+#startup: services
 panel_icon: mdi:router-wireless
 arch:
   - aarch64
   - amd64
   - armv7
-map: 
-  - addon_config:rw
+#map: 
+#  - addon_config:rw
 ingress: true
-advanced: true
+#advanced: true
 init: false
 boot: auto
 hassio_api: true
 homeassistant_api: true
 host_network: true
 privileged:
-  - SYS_ADMIN
+#  - SYS_ADMIN
   - NET_ADMIN
 options:
   client_internet_access: true
