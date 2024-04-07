@@ -14,7 +14,7 @@ map:
 ingress: true
 #advanced: true
 init: false
-boot: auto
+#boot: auto
 hassio_api: true
 homeassistant_api: true
 host_network: true
