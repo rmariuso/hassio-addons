@@ -23,7 +23,7 @@ privileged:
   - SYS_ADMIN
   - NET_ADMIN
 options:
-  client_internet_access: true
+  client_internet_access: false
   language: English
 schema:
   client_internet_access: bool
