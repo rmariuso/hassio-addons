@@ -6,25 +6,25 @@ FROM ${BUILD_FROM}
 # Set shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-RUN apt-get update
-RUN apt-get install -y software-properties-common 
-RUN add-apt-repository ppa:ondrej/php
-RUN apt-get install -y git iptables-persistent procps iproute2 iw wpasupplicant net-tools
-RUN apt-get install -y sudo mc hostapd qrencode dnsmasq jq lighttpd vnstat locales
-RUN apt-get install -y dhcpcd5
-RUN apt-get install -y php7.4-cgi
+#RUN apt-get update
+#RUN apt-get install -y software-properties-common 
+#RUN add-apt-repository ppa:ondrej/php
+#RUN apt-get install -y git iptables-persistent procps iproute2 iw wpasupplicant net-tools
+#RUN apt-get install -y sudo mc hostapd qrencode dnsmasq jq lighttpd vnstat locales
+#RUN apt-get install -y dhcpcd5
+#RUN apt-get install -y php7.4-cgi
 
-RUN rm -Rf /var/www/html
+#RUN rm -Rf /var/www/html
 #RUN git clone --branch 2.9.4 https://github.com/RaspAP/raspap-webgui /var/www/html 
  
-COPY /rootfs / 
+#COPY /rootfs / 
 WORKDIR /data
 COPY run.sh /
 RUN chmod a+x /run.sh
 
-RUN cp /var/www/html/config/50-raspap-router.conf /etc/lighttpd/conf-available
-RUN ln -s /etc/lighttpd/conf-available/50-raspap-router.conf /etc/lighttpd/conf-enabled/50-raspap-router.conf
-VOLUME [ "/sys/fs/cgroup" ]
+#RUN cp /var/www/html/config/50-raspap-router.conf /etc/lighttpd/conf-available
+#RUN ln -s /etc/lighttpd/conf-available/50-raspap-router.conf /etc/lighttpd/conf-enabled/50-raspap-router.conf
+#VOLUME [ "/sys/fs/cgroup" ]
 CMD [ "/run.sh" ]
 
 # Build arguments
