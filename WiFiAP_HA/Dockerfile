@@ -18,14 +18,14 @@ RUN rm -Rf /var/www/html
 #RUN git clone --branch 2.9.4 https://github.com/RaspAP/raspap-webgui /var/www/html 
  
 COPY /rootfs / 
-COPY data/00-init.sh /
+COPY data/run.sh /
 # TODO wpa_supplicant -Dnl80211 -i wlan0 -c/etc/wpa_supplicant/wpa_supplicant.conf
-RUN chmod a+x /00-init.sh
+RUN chmod a+x /run.sh
 
 RUN cp /var/www/html/config/50-raspap-router.conf /etc/lighttpd/conf-available
 RUN ln -s /etc/lighttpd/conf-available/50-raspap-router.conf /etc/lighttpd/conf-enabled/50-raspap-router.conf
 VOLUME [ "/sys/fs/cgroup" ]
-CMD [ "/00-init.sh" ]
+CMD [ "/run.sh" ]
 
 # Build arguments
 #ARG BUILD_ARCH
