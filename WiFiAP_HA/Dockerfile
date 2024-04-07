@@ -19,11 +19,12 @@ RUN rm -Rf /var/www/html
  
 COPY /rootfs / 
 # TODO wpa_supplicant -Dnl80211 -i wlan0 -c/etc/wpa_supplicant/wpa_supplicant.conf
-RUN chmod a+x /etc/cont-init.d/00-init.sh
+RUN chmod a+x /data/00-init.sh
 
 RUN cp /var/www/html/config/50-raspap-router.conf /etc/lighttpd/conf-available
 RUN ln -s /etc/lighttpd/conf-available/50-raspap-router.conf /etc/lighttpd/conf-enabled/50-raspap-router.conf
 VOLUME [ "/sys/fs/cgroup" ]
+CMD [ "/data/00-init.sh" ]
 
 # Build arguments
 #ARG BUILD_ARCH
