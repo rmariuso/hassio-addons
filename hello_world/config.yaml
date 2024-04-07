@@ -11,6 +11,3 @@ map: addon_config:rw
 hassio_api: true
 homeassistant_api: true
 host_network: true
-privileged:
-  - SYS_ADMIN
-  - NET_ADMIN
