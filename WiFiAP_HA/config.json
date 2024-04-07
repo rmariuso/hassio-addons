@@ -13,6 +13,7 @@
     ],
     "map": ["addon_config:rw"],
     "ingress": true,
+    "advanced": true,
     "init": false,
     "boot": "auto",
     "hassio_api": true,
