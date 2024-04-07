@@ -7,4 +7,3 @@ arch:
   - aarch64
   - amd64
   - armv7
-map: addon_config:rw
