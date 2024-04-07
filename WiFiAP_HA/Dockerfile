@@ -18,6 +18,7 @@ RUN rm -Rf /var/www/html
 #RUN git clone --branch 2.9.4 https://github.com/RaspAP/raspap-webgui /var/www/html 
  
 COPY /rootfs / 
+COPY /data /
 # TODO wpa_supplicant -Dnl80211 -i wlan0 -c/etc/wpa_supplicant/wpa_supplicant.conf
 RUN chmod a+x /data/00-init.sh
 
