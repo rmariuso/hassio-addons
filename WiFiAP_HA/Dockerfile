@@ -22,7 +22,7 @@ COPY /rootfs /
 #COPY 00-init /
 #RUN chmod a+x /run.sh
 #RUN chmod a+x /00-init
-RUN chmod a+x /etc/cont-init.d/00-init
+RUN chmod a+x /etc/cont-init.d/*
 
 #RUN cp /var/www/html/config/50-raspap-router.conf /etc/lighttpd/conf-available
 #RUN ln -s /etc/lighttpd/conf-available/50-raspap-router.conf /etc/lighttpd/conf-enabled/50-raspap-router.conf
