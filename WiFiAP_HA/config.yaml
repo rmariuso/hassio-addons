@@ -10,7 +10,7 @@ arch:
   - amd64
   - armv7
 map: 
-  - addon_config:rw
+  - config:rw
 ingress: true
 #advanced: true
 init: false
