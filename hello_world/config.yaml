@@ -17,4 +17,3 @@ host_network: true
 privileged:
   - SYS_ADMIN
   - NET_ADMIN
-
