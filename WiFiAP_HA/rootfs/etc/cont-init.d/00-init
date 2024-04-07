@@ -5,8 +5,8 @@
 # ==============================================================================
 
 # Run dnsmasq
-bashio::log.info "Init..."  
-declare DIR 
+bashio::log.info "Init..."
+declare DIR
 declare DIR_RASPAP
 DIR="/config/wifiap_ha"
 DIR_RASPAP="${DIR}/raspap"
@@ -14,18 +14,18 @@ LANG="$(bashio::config 'language')"
 # Ensure configuration exists
 if ! bashio::fs.directory_exists "${DIR}"; then
 
-	bashio::log.info "Create folders.." 
-    mkdir -p "${DIR_RASPAP}" || bashio::exit.nok "Failed to create hotspot_wifi configuration directory" 
- 
+	bashio::log.info "Create folders.."
+    mkdir -p "${DIR_RASPAP}" || bashio::exit.nok "Failed to create hotspot_wifi configuration directory"
+
     mkdir -p "${DIR_RASPAP}/networking"
-    mkdir -p "${DIR}/vnstat" 
+    mkdir -p "${DIR}/vnstat"
     mkdir -p "${DIR}/dhcpcd"
-    mkdir -p "${DIR}/hostapd" 
-    mkdir -p "${DIR}/dnsmasq" 
+    mkdir -p "${DIR}/hostapd"
+    mkdir -p "${DIR}/dnsmasq"
 
     mv /var/www/html/raspap.php "${DIR_RASPAP}/raspap.php"
-     
-	#### dnsmasq
+    
+    #### dnsmasq
 	bashio::log.info "MV de ${DIR}/dnsmasq/dnsmasq.conf"
     #mv /etc/dnsmasq.conf "${DIR}/dnsmasq/dnsmasq.conf"
 	mv /var/www/html/config/090_raspap.conf "${DIR}/dnsmasq"
@@ -45,7 +45,7 @@ if ! bashio::fs.directory_exists "${DIR}"; then
 fi
 
 mv /etc/config.php /var/www/html/includes/
-mv /var/www/html/app/icons/* /var/www/html 
+mv /var/www/html/app/icons/* /var/www/html
 
 case $LANG in
     Deutsch) 
