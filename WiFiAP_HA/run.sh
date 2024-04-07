@@ -6,6 +6,7 @@
 
 # Run dnsmasq
 #bashio::log.info "Init..."
+echo "Hello world!"
 declare DIR
 declare DIR_RASPAP
 DIR="/config/wifiap_ha"
