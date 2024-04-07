@@ -9,4 +9,3 @@ arch:
   - armv7
 map: addon_config:rw
 hassio_api: true
-homeassistant_api: true
