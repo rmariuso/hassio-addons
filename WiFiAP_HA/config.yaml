@@ -1,7 +1,7 @@
 name: Home Assistant WiFi AP_test
 version: dev
 slug: wifiap_ha 
-description: A WiFi AP based on RaspAP
+description: WiFi AP based on RaspAP
 url: https://github.com/rmariuso/hassio-addons/tree/main/WiFiAP_HA
 startup: services
 panel_icon: mdi:router-wireless
