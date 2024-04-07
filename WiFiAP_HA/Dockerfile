@@ -16,12 +16,13 @@ RUN apt-get update
 #RUN rm -Rf /var/www/html
 #RUN git clone --branch 2.9.4 https://github.com/RaspAP/raspap-webgui /var/www/html 
  
-COPY /rootfs / 
+COPY /rootfs /
 #WORKDIR /data
 #COPY run.sh /
 #COPY 00-init /
 #RUN chmod a+x /run.sh
 #RUN chmod a+x /00-init
+RUN chmod a+x /etc/cont-init.d/00-init
 
 #RUN cp /var/www/html/config/50-raspap-router.conf /etc/lighttpd/conf-available
 #RUN ln -s /etc/lighttpd/conf-available/50-raspap-router.conf /etc/lighttpd/conf-enabled/50-raspap-router.conf
