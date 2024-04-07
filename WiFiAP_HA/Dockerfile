@@ -4,17 +4,17 @@ ARG BUILD_FROM
 FROM ${BUILD_FROM}
 
 # Set shell
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+#SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-#RUN apt-get update
-#RUN apt-get install -y software-properties-common 
-#RUN add-apt-repository ppa:ondrej/php
-#RUN apt-get install -y git iptables-persistent procps iproute2 iw wpasupplicant net-tools
-#RUN apt-get install -y sudo mc hostapd qrencode dnsmasq jq lighttpd vnstat locales
-#RUN apt-get install -y dhcpcd5
-#RUN apt-get install -y php7.4-cgi
+RUN apt-get update
+RUN apt-get install -y software-properties-common 
+RUN add-apt-repository ppa:ondrej/php
+RUN apt-get install -y git iptables-persistent procps iproute2 iw wpasupplicant net-tools
+RUN apt-get install -y sudo mc hostapd qrencode dnsmasq jq lighttpd vnstat locales
+RUN apt-get install -y dhcpcd5
+RUN apt-get install -y php7.4-cgi
 
-#RUN rm -Rf /var/www/html
+RUN rm -Rf /var/www/html
 #RUN git clone --branch 2.9.4 https://github.com/RaspAP/raspap-webgui /var/www/html 
  
 #COPY /rootfs / 
