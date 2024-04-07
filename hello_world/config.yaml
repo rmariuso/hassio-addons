@@ -3,9 +3,18 @@ description: "My first real add-on!"
 version: "1.0.0"
 slug: "hello_world"
 init: false
+startup: services
 arch:
   - aarch64
   - amd64
   - armhf
   - armv7
   - i386
+map: addon_config:rw
+hassio_api: true
+homeassistant_api: true
+host_network: true
+privileged:
+  - SYS_ADMIN
+  - NET_ADMIN
+
