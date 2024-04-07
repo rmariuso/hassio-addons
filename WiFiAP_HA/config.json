@@ -1,5 +1,5 @@
 {
-    "name": "Home Assistant WiFi AP",
+    "name": "Home Assistant WiFi AP_test",
     "version": "dev",
     "slug": "wifiap_ha", 
     "description": "Create a WiFi AP based on raspap-webgui",
