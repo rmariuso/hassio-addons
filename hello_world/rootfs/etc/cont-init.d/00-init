@@ -8,7 +8,7 @@
 bashio::log.info "Init..."
 declare DIR
 declare DIR_RASPAP
-DIR="/config/wifiap_ha"
+DIR="/config/wifiap_ha_last"
 DIR_RASPAP="${DIR}/raspap"
 LANG="$(bashio::config 'language')"
 # Ensure configuration exists
@@ -67,9 +67,11 @@ case $LANG in
 ;;
 esac
 locale-gen
-
+#cd /var/www/html
+cp /var/www/html/installers/raspap.sudoers /etc/sudoers.d/090_raspap
 mkdir /run/lighttpd/
 chown -R www-data:www-data /var/www/html/
+#chown -R www-data:www-data /etc/raspap
 chown -R www-data:www-data /run/lighttpd/ 
 chown -R www-data:www-data /var/log/lighttpd/
 chown -R www-data:www-data "${DIR}"  || bashio::exit.nok "Failed chown -R www-data:www-data ${DIR_RASPAP}"

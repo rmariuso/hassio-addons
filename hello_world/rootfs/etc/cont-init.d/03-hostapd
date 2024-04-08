@@ -4,7 +4,7 @@
 # Runs the hostapd 
 # ==============================================================================
 
-DIR="/config/wifiap_ha"
+DIR="/config/wifiap_ha_last"
 # DIR_RASPAP="${DIR}/raspap"
 CONFIG="${DIR}/hostapd/hostapd.conf" 
 

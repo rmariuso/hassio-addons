@@ -5,7 +5,7 @@
 # ==============================================================================
  
 
-DIR="/config/wifiap_ha"
+DIR="/config/wifiap_ha_last"
 # DIR_RASPAP="${DIR}/raspap"
 CONFIG="${DIR}/dhcpcd/dhcpcd.conf" 
 

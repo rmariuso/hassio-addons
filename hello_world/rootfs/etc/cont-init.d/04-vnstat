@@ -4,7 +4,7 @@
 # Runs the vnstatd 
 # ==============================================================================
 
-DIR="/config/wifiap_ha"
+DIR="/config/wifiap_ha_last"
 DIR_RASPAP="${DIR}/raspap"
 CONFIG="${DIR_RASPAP}/vnstat.conf"
 
