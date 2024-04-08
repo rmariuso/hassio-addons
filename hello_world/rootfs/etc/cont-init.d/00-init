@@ -23,7 +23,7 @@ if ! bashio::fs.directory_exists "${DIR}"; then
     mkdir -p "${DIR}/hostapd"
     mkdir -p "${DIR}/dnsmasq"
 
-    mv /var/www/html/raspap.php "${DIR_RASPAP}/raspap.php"
+#    mv /var/www/html/raspap.php "${DIR_RASPAP}/raspap.php"
     
     #### dnsmasq
 	bashio::log.info "MV de ${DIR}/dnsmasq/dnsmasq.conf"
