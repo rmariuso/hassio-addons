@@ -20,7 +20,7 @@ hassio_api: true
 homeassistant_api: true
 host_network: true
 privileged:
-  - SYS_ADMIN
+#  - SYS_ADMIN
   - NET_ADMIN
 options:
   client_internet_access: false
