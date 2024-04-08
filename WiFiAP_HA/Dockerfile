@@ -6,8 +6,8 @@ FROM $BUILD_FROM
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN apt-get update
-RUN apt-get install -y software-properties-common 
-RUN add-apt-repository ppa:ondrej/php
+RUN apt-get install -y software-properties-common
+#RUN add-apt-repository ppa:ondrej/php
 RUN apt-get install -y git iptables procps iproute2 iw wpasupplicant net-tools
 RUN apt-get install -y sudo mc hostapd qrencode dnsmasq jq lighttpd vnstat locales
 RUN apt-get install -y dhcpcd5
