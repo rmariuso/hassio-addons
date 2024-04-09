@@ -13,11 +13,9 @@ arch:
 map: 
   - config:rw
 ingress: true
-#advanced: true
 init: false
 boot: manual
-#hassio_api: true
-#homeassistant_api: true
+udev: true
 host_network: true
 privileged:
   - NET_ADMIN
