@@ -75,8 +75,8 @@ phpenmod opcache
 chown -R www-data:www-data /var/www/html
 chown -R www-data:www-data "${DIR_RASPAP}"
 
-chown -R www-data:www-data /run/lighttpd
-chown -R www-data:www-data /var/log/lighttpd/
+#chown -R www-data:www-data /run/lighttpd
+#chown -R www-data:www-data /var/log/lighttpd/
 chown -R www-data:www-data "${DIR}"  || bashio::exit.nok "Failed chown -R www-data:www-data ${DIR_RASPAP}"
 
 #echo '' > /tmp/hostapd.log
