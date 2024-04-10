@@ -24,8 +24,8 @@ COPY /rootfs /
 #RUN chmod a+x /00-init
 RUN chmod a+x /etc/cont-init.d/*
 
-RUN cp /var/www/html/config/50-raspap-router.conf /etc/lighttpd/conf-available
-RUN ln -s /etc/lighttpd/conf-available/50-raspap-router.conf /etc/lighttpd/conf-enabled/50-raspap-router.conf
+#RUN cp /var/www/html/config/50-raspap-router.conf /etc/lighttpd/conf-available
+#RUN ln -s /etc/lighttpd/conf-available/50-raspap-router.conf /etc/lighttpd/conf-enabled/50-raspap-router.conf
 VOLUME [ "/sys/fs/cgroup" ]
 #CMD [ "/run.sh" ]
 #CMD [ "/00-init" ]
