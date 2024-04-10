@@ -1,0 +1,27 @@
+name: Home Assistant WiFi AP
+version: dev
+slug: wifiap
+description: WiFi AP based on RaspAP
+url: https://github.com/rmariuso/hassio-addons/tree/main/WiFiAP_HA_last
+startup: services
+panel_icon: mdi:router-wireless
+panel_title: wifi AP
+arch:
+  - aarch64
+  - amd64
+  - armv7
+map: 
+  - config:rw
+ingress: true
+init: false
+boot: manual
+host_network: true
+udev: true
+privileged:
+  - NET_ADMIN
+options:
+  client_internet_access: false
+  language: English
+schema:
+  client_internet_access: bool
+  language: list(English|Deutsch|Español|Français|Italiano|Română)
