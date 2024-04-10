@@ -4,11 +4,11 @@
 # Runs the vnstatd 
 # ==============================================================================
 
-DIR="/config/wifiap_ha_last"
+DIR="/config/wifiap"
 DIR_RASPAP="${DIR}/raspap"
-CONFIG="${DIR_RASPAP}/vnstat.conf"
+CONFIG_VNSTAT="${DIR_RASPAP}/vnstat.conf"
 
-# Run lighttpd
+# Run vnctatd
 bashio::log.info "Starting vnstatd ..."
-vnstatd -d --config "${CONFIG}"
-vnstat --config "${CONFIG}" -i wlan0
+vnstatd -d --config "${CONFIG_VNSTAT}"
+vnstat --config "${CONFIG_VNSTAT}" -i wlan0

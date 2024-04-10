@@ -3,10 +3,10 @@
 # Home Assistant Community Add-on: Pi-hole
 # Runs the dnsmasq 
 # ==============================================================================
-DIR="/config/wifiap_ha_last"
+DIR="/config/wifiap"
 # DIR_RASPAP="${DIR}/raspap"
-CONFIG="${DIR}/dnsmasq/090_raspap.conf" 
+CONFIG_DNSMASQ="${DIR}/dnsmasq/090_raspap.conf" 
 
 # Run dnsmasq
 bashio::log.info "Starting dnsmasq..." 
-dnsmasq -C "${CONFIG}"
+dnsmasq -C "${CONFIG_DNSMASQ}"

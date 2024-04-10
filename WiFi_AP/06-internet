@@ -1,12 +1,4 @@
 #!/usr/bin/with-contenv bashio
-# ==============================================================================
-# Home Assistant Community Add-on: Pi-hole
-# Runs the hostapd 
-# ==============================================================================
-
-# Get the Default Route interface
-#DEFAULT_ROUTE_INTERFACE=$(ip route show default | awk '/^default/ { print $5 }')
-# Declare variables
 
 #declare client_internet_access
 #client_internet_access=$(bashio::config 'client_internet_access')

@@ -1,7 +1,7 @@
 <?php
 
 define('RASPI_BRAND_TEXT', 'wifiAP');
-define('HA_CONFIG', '/config/wifiap_ha_last');
+define('HA_CONFIG', '/config/wifiap');
 define('RASPI_CONFIG', HA_CONFIG.'/raspap');
 define('RASPI_CONFIG_NETWORK', RASPI_CONFIG.'/networking/defaults.json');
 define('RASPI_CONFIG_PROVIDERS', 'config/vpn-providers.json');
