@@ -91,8 +91,8 @@ grep -riIl "/etc/dnsmasq.d" /var/www/html/ | xargs sed -i "s|/etc/dnsmasq.d|${DI
 
 echo '' >> "${DIR_RASPAP}/hostapd.ini"
 	
-#grep -riIl 'sudo' /var/www/html/ | xargs sed -i "s|sudo||g"
-#grep -riIl 'hostname -f' /var/www/html/ | xargs sed -i "s|hostname -f|hostname|g"
+grep -riIl 'sudo' /var/www/html/ | xargs sed -i "s|sudo||g"
+grep -riIl 'hostname -f' /var/www/html/ | xargs sed -i "s|hostname -f|hostname|g"
 #ifconfig wlan0 down
 #ifconfig wlan0 up
 
