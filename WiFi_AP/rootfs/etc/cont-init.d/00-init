@@ -65,7 +65,7 @@ case $LANG in
 esac
 locale-gen
 
-cp /var/www/html/installers/raspap.sudoers /etc/sudoers.d/090_raspap
+#cp /var/www/html/installers/raspap.sudoers /etc/sudoers.d/090_raspap
 
 sed -i -E 's/^session\.cookie_httponly\s*=\s*(0|([O|o]ff)|([F|f]alse)|([N|n]o))\s*$/session.cookie_httponly = 1/' /etc/php/8.2/cgi/php.ini
 sed -i -E 's/^;?opcache\.enable\s*=\s*(0|([O|o]ff)|([F|f]alse)|([N|n]o))\s*$/opcache.enable = 1/' /etc/php/8.2/cgi/php.ini
