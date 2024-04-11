@@ -108,6 +108,14 @@ dhcpcd -f "${CONFIG_DHCPCD}"
 bashio::log.info "Starting dnsmasq..." 
 dnsmasq -C "${CONFIG_DNSMASQ}"
 
+# Internet access
+if $(bashio::config.true "client_internet_access"); then
+    bashio::log.info "internet acces"
+    iptables-nft -t nat -A POSTROUTING -o end0 -j MASQUERADE
+    iptables-nft -P FORWARD ACCEPT
+    iptables-nft -F FORWARD
+fi
+
 # Run vnctatd
 bashio::log.info "Starting vnstatd ..."
 vnstatd -d --config "${CONFIG_VNSTAT}"
@@ -130,11 +138,3 @@ cp /tmp/50-raspap-router.conf /etc/lighttpd/conf-available/
 ln -s /etc/lighttpd/conf-available/50-raspap-router.conf /etc/lighttpd/conf-enabled/50-raspap-router.conf
 
 exec lighttpd -f /etc/lighttpd/lighttpd.conf
-
-# Internet access
-if $(bashio::config.true "client_internet_access"); then
-    bashio::log.info "internet acces"
-    iptables-nft -t nat -A POSTROUTING -o end0 -j MASQUERADE
-    iptables-nft -P FORWARD ACCEPT
-    iptables-nft -F FORWARD
-fi
