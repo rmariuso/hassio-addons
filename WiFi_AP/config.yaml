@@ -20,7 +20,7 @@ udev: true
 privileged:
   - NET_ADMIN
 options:
-  client_internet_access: false
+  client_internet_access: true
   language: English
 schema:
   client_internet_access: bool
