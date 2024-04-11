@@ -75,7 +75,7 @@ mkdir /run/lighttpd/
 chown -R www-data:www-data /var/www/html
 chown -R www-data:www-data "${DIR_RASPAP}"
 chown -R www-data:www-data "${DIR}"
-#chown -R www-data:www-data "${DIR}/*"
+chown -R www-data:www-data "${DIR}/hostapd"
 
 chown -R www-data:www-data /run/lighttpd
 chown -R www-data:www-data /var/log/lighttpd/
