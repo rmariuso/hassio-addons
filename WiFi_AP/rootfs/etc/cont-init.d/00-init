@@ -81,8 +81,8 @@ chown -R www-data:www-data /run/lighttpd
 chown -R www-data:www-data /var/log/lighttpd/
 chown -R www-data:www-data "${DIR}"  || bashio::exit.nok "Failed chown -R www-data:www-data ${DIR_RASPAP}"
 
-#echo '' > /tmp/hostapd.log
-#echo '' > /tmp/dnsmasq.log
+echo '' > /tmp/hostapd.log
+echo '' > /tmp/dnsmasq.log
 chown -R www-data:www-data /tmp
 chown -R www-data:www-data /var/tmp 
 
