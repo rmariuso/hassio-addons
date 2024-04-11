@@ -84,10 +84,10 @@ chown -R www-data:www-data "${DIR}"  || bashio::exit.nok "Failed chown -R www-da
 #chown -R www-data:www-data /tmp/ 
 #chown -R www-data:www-data /var/tmp/ 
 
-#grep -riIl '/etc/raspap/hostapd.ini' /var/www/html/ | xargs sed -i "s|/etc/raspap/hostapd.ini|${DIR_RASPAP}/hostapd.ini|g"
-#grep -riIl "/etc/dnsmasq.d" /var/www/html/ | xargs sed -i "s|/etc/dnsmasq.d|${DIR}/dnsmasq|g"
+grep -riIl '/etc/raspap/hostapd.ini' /var/www/html/ | xargs sed -i "s|/etc/raspap/hostapd.ini|${DIR_RASPAP}/hostapd.ini|g"
+grep -riIl "/etc/dnsmasq.d" /var/www/html/ | xargs sed -i "s|/etc/dnsmasq.d|${DIR}/dnsmasq|g"
 
-#echo '' >> "${DIR_RASPAP}/hostapd.ini"
+echo '' >> "${DIR_RASPAP}/hostapd.ini"
 	
 #grep -riIl 'sudo' /var/www/html/ | xargs sed -i "s|sudo||g"
 #grep -riIl 'hostname -f' /var/www/html/ | xargs sed -i "s|hostname -f|hostname|g"
