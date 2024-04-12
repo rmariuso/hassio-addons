@@ -109,7 +109,6 @@ bashio::log.info "Starting dnsmasq..."
 dnsmasq -C "${CONFIG_DNSMASQ}"
 
 # Internet access
-iptables -F
 if $(bashio::config.true "client_internet_access"); then
     iptables -F
     bashio::log.info "internet acces"
