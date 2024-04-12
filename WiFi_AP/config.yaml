@@ -12,6 +12,7 @@ arch:
   - armv7
 map: 
   - config:rw
+tmpfs: true
 ingress: true
 init: false
 boot: manual
