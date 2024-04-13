@@ -5,6 +5,7 @@
 # ==============================================================================
 
 DIR="/config/wifiap"
+DIR_RASPAP="${DIR}/raspap"
 CONFIG="${DIR_RASPAP}/vnstat.conf"
 
 # Run vnstatd
