@@ -114,7 +114,7 @@ dnsmasq -C "${CONFIG_DNSMASQ}"
 if $(bashio::config.true "client_internet_access"); then
     bashio::log.info "internet acces"
 #    iptables-nft -t nat -A POSTROUTING -o $DEFAULT_ROUTE_INTERFACE -j MASQUERADE
-    iptables-nft -t nat -A POSTROUTING -o end0 -j MASQUERADE
+    iptables-nft -t nat -A POSTROUTING -o eth0 -j MASQUERADE
     iptables-nft -P FORWARD ACCEPT
     iptables-nft -F FORWARD
 #    iptables -I DOCKER-USER -i src_if -o dst_if -j ACCEPT
