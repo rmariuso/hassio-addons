@@ -17,6 +17,7 @@ ingress: true
 init: false
 boot: manual
 host_network: true
+host_dbus: true
 udev: true
 privileged:
   - NET_ADMIN
