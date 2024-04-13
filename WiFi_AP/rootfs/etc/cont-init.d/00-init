@@ -5,10 +5,6 @@ declare DIR
 declare DIR_RASPAP
 DIR="/config/wifiap"
 DIR_RASPAP="${DIR}/raspap"
-#CONFIG_HOSTAPD="${DIR}/hostapd/hostapd.conf" 
-#CONFIG_DHCPCD="${DIR}/dhcpcd/dhcpcd.conf" 
-#CONFIG_DNSMASQ="${DIR}/dnsmasq/090_raspap.conf" 
-#CONFIG_VNSTAT="${DIR_RASPAP}/vnstat.conf"
 LANG="$(bashio::config 'language')"
 
 # Ensure configuration exists
@@ -95,54 +91,3 @@ grep -riIl 'sudo' /var/www/html/ | xargs sed -i "s|sudo||g"
 grep -riIl 'hostname -f' /var/www/html/ | xargs sed -i "s|hostname -f|hostname|g"
 #ifconfig wlan0 down
 #ifconfig wlan0 up
-
-# Run dhcpcd
-#bashio::log.info "Starting dhcpcd..." 
-#dhcpcd -f "${CONFIG_DHCPCD}"
-
-# Run dnsmasq
-#bashio::log.info "Starting dnsmasq..." 
-#dnsmasq -C "${CONFIG_DNSMASQ}"
-
-# Run hostapd
-#bashio::log.info "Starting hostapd..."
-#hostapd -d -B -i wlan0 ${CONFIG_HOSTAPD} -f /tmp/hostapd.log
-
-# Internet access
-# Get the Default Route interface
-#DEFAULT_ROUTE_INTERFACE=$(ip route show default | awk '/^default/ { print $5 }')
-#if $(bashio::config.true "client_internet_access"); then
-#    bashio::log.info "internet acces"
-#    iptables-nft -t nat -A POSTROUTING -o $DEFAULT_ROUTE_INTERFACE -j MASQUERADE
-#    iptables-nft -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-#    iptables-nft -P FORWARD ACCEPT
-#    iptables-nft -F FORWARD
-#    iptables -I DOCKER-USER -i src_if -o dst_if -j ACCEPT
-#    iptables -t nat -C POSTROUTING -o enxb827eb315c4d -j MASQUERADE || iptables -t nat -A POSTROUTING -o enxb827eb315c4d -j MASQUERADE
-#    iptables -C FORWARD -i enxb827eb315c4d -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT || iptables -A FORWARD -i enxb827eb315c4d -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
-#    iptables -C FORWARD -i wlan0 -o enxb827eb315c4d -j ACCEPT || iptables -A FORWARD -i wlan0 -o enxb827eb315c4d -j ACCEPT
-#    iptables-save
-#fi
-
-# Run vnstatd
-#bashio::log.info "Starting vnstatd ..."
-#vnstatd -d --config "${CONFIG_VNSTAT}"
-#vnstat --config "${CONFIG_VNSTAT}" -i wlan0
-
-# Runs lighttpd 
-#bashio::log.info "lighttpd-enable-mod fastcgi-php   ..." 
-#lighttpd-enable-mod fastcgi-php    
-
-#bashio::log.info "Starting lighttpd ..." 
-
-#WEBROOT="/var/www/html"
-#CONFSRC="$WEBROOT/config/50-raspap-router.conf"
-#LTROOT=$(grep "server.document-root" /etc/lighttpd/lighttpd.conf | awk -F '=' '{print $2}' | tr -d " \"")
-
-#HTROOT=${WEBROOT/$LTROOT}
-#HTROOT=$(echo "$HTROOT" | sed -e 's/\/$//')
-#awk "{gsub(\"/REPLACE_ME\",\"$HTROOT\")}1" $CONFSRC > /tmp/50-raspap-router.conf
-#cp /tmp/50-raspap-router.conf /etc/lighttpd/conf-available/
-#ln -s /etc/lighttpd/conf-available/50-raspap-router.conf /etc/lighttpd/conf-enabled/50-raspap-router.conf
-
-#exec lighttpd -f /etc/lighttpd/lighttpd.conf

@@ -5,9 +5,8 @@
 # ==============================================================================
 
 DIR="/config/wifiap"
-# DIR_RASPAP="${DIR}/raspap"
-CONFIG_HOSTAPD="${DIR}/hostapd/hostapd.conf" 
+CONFIG="${DIR}/hostapd/hostapd.conf" 
 
 # Run hostapd
 bashio::log.info "Starting hostapd..."
-hostapd -d -B -i wlan0 ${CONFIG_HOSTAPD} -f /tmp/hostapd.log
+hostapd -d -B -i wlan0 ${CONFIG} -f /tmp/hostapd.log

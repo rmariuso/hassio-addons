@@ -3,12 +3,10 @@
 # Home Assistant Community Add-on: Pi-hole
 # Runs the hostapd daemon
 # ==============================================================================
- 
 
 DIR="/config/wifiap"
-# DIR_RASPAP="${DIR}/raspap"
-CONFIG_DHCPCD="${DIR}/dhcpcd/dhcpcd.conf" 
+CONFIG="${DIR}/dhcpcd/dhcpcd.conf" 
 
 # Run dhcpcd
 bashio::log.info "Starting dhcpcd..." 
-dhcpcd -f "${CONFIG_DHCPCD}"
+dhcpcd -f "${CONFIG}"
