@@ -96,10 +96,6 @@ grep -riIl 'hostname -f' /var/www/html/ | xargs sed -i "s|hostname -f|hostname|g
 #ifconfig wlan0 down
 #ifconfig wlan0 up
 
-# Run hostapd
-bashio::log.info "Starting hostapd..."
-hostapd -d -B -i wlan0 ${CONFIG_HOSTAPD} -f /tmp/hostapd.log
-
 # Run dhcpcd
 bashio::log.info "Starting dhcpcd..." 
 dhcpcd -f "${CONFIG_DHCPCD}"
@@ -107,6 +103,10 @@ dhcpcd -f "${CONFIG_DHCPCD}"
 # Run dnsmasq
 bashio::log.info "Starting dnsmasq..." 
 dnsmasq -C "${CONFIG_DNSMASQ}"
+
+# Run hostapd
+bashio::log.info "Starting hostapd..."
+hostapd -d -B -i wlan0 ${CONFIG_HOSTAPD} -f /tmp/hostapd.log
 
 # Internet access
 # Get the Default Route interface
