@@ -59,7 +59,7 @@ case $LANG in
     *) 
 ;;
 esac
-locale-gen
+#locale-gen
 
 #cp /var/www/html/installers/raspap.sudoers /etc/sudoers.d/090_raspap
 
