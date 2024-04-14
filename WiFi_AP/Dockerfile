@@ -17,7 +17,7 @@ RUN apk add git \
             procps \
             iproute2 \
             iw \
-            wpasupplicant \
+            wpa_supplicant \
             net-tools \
             sudo \
             mc \
