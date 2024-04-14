@@ -4,9 +4,9 @@
 # Runs the hostapd daemon
 # ==============================================================================
 
-DIR="/config/wifiap"
-CONFIG="${DIR}/dhcpcd/dhcpcd.conf" 
+#DIR="/config/wifiap"
+#CONFIG="${DIR}/dhcpcd/dhcpcd.conf" 
 
 # Run dhcpcd
-bashio::log.info "Starting dhcpcd..." 
-dhcpcd -f "${CONFIG}"
+#bashio::log.info "Starting dhcpcd..." 
+#dhcpcd -f "${CONFIG}"
