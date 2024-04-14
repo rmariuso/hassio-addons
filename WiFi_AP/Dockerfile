@@ -27,8 +27,6 @@ RUN apk add git \
             jq \
             lighttpd \
             vnstat \
-            isoquery \
-            locales \
             dhcpcd \
             php82-cgi
 
