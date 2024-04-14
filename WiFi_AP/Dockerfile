@@ -29,8 +29,8 @@ RUN apk add git \
             vnstat \
             isoquery \
             locales \
-            dhcpcd5 \
-            php8.2-cgi
+            dhcpcd \
+            php82-cgi
 
 RUN rm -Rf /var/www/html
 RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
