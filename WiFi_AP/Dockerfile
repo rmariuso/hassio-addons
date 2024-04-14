@@ -12,10 +12,25 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 #RUN apt-get install -y php8.2-cgi
 
 RUN apk update
-RUN apk add git iptables procps iproute2 iw wpasupplicant net-tools
-RUN apk add sudo mc hostapd qrencode dnsmasq jq lighttpd vnstat isoquery locales
-RUN apk add dhcpcd5
-RUN apk add php8.2-cgi
+RUN apk add git \
+            iptables \
+            procps \
+            iproute2 \
+            iw \
+            wpasupplicant \
+            net-tools \
+            sudo \
+            mc \
+            hostapd \
+            qrencode \
+            dnsmasq \
+            jq \
+            lighttpd \
+            vnstat \
+            isoquery \
+            locales \
+            dhcpcd5 \
+            php8.2-cgi
 
 RUN rm -Rf /var/www/html
 RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
