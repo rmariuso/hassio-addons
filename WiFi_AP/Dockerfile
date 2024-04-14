@@ -8,7 +8,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN apt-get update
 RUN apt-get install -y git iptables procps iproute2 iw wpasupplicant net-tools
 RUN apt-get install -y sudo mc hostapd qrencode dnsmasq jq lighttpd vnstat isoquery locales
-RUN apt-get install -y dhcpcd5
+RUN apt-get install -y firmware-brcm80211 dhcpcd5
 RUN apt-get install -y php8.2-cgi
 
 RUN rm -Rf /var/www/html
