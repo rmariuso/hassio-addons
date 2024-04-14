@@ -4,7 +4,7 @@
 #client_internet_access=$(bashio::config 'client_internet_access')
 
 ## Route traffic
-iptables-nft -t nat -A POSTROUTING -o end0 -j MASQUERADE
+iptables-nft -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 iptables-nft -P FORWARD ACCEPT
 iptables-nft -F FORWARD
 
