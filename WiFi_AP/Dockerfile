@@ -22,7 +22,6 @@ RUN apk add git \
             sudo \
             mc \
             hostapd \
-            qrencode \
             dnsmasq \
             jq \
             lighttpd \
