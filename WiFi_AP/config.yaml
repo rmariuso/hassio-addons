@@ -16,6 +16,8 @@ tmpfs: true
 ingress: true
 init: false
 boot: manual
+apparmor: true
+host_dbus: true
 host_network: true
 udev: true
 privileged:
