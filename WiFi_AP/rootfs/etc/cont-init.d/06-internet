@@ -4,9 +4,17 @@
 #client_internet_access=$(bashio::config 'client_internet_access')
 
 ## Route traffic
-iptables-nft -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-iptables-nft -P FORWARD ACCEPT
-iptables-nft -F FORWARD
+#iptables-nft -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+#iptables-nft -P FORWARD ACCEPT
+#iptables-nft -F FORWARD
+
+if bashio::config.true 'client_internet_access'; then
+    bashio::log.info "Enabled internet"  
+    sysctl -w net.ipv4.ip_forward=1
+    iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE 
+    iptables -A FORWARD -i eth0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+    iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT
+fi
 
 #if $(bashio::config.true "client_internet_access"); then
 #    bashio::log.info "internet acces"
