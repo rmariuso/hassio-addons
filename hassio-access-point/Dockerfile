@@ -11,7 +11,7 @@ ENV LANG C.UTF-8
 #apk add --no-cache bash iw hostapd networkmanager networkmanager-cli net-tools sudo dnsmasq iptables && \
 #rm -rf /var/cache/apk/*
 RUN apt update && \
-apt install -y bash iw hostapd network-manager network-manager-cli net-tools sudo dnsmasq iptables
+apt install -y bash iw hostapd network-manager net-tools sudo dnsmasq iptables
 
 
 COPY hostapd.conf /
