@@ -89,5 +89,5 @@ echo '' >> "${DIR_RASPAP}/hostapd.ini"
 	
 grep -riIl 'sudo' /var/www/html/ | xargs sed -i "s|sudo||g"
 grep -riIl 'hostname -f' /var/www/html/ | xargs sed -i "s|hostname -f|hostname|g"
-#ifconfig wlan0 down
-#ifconfig wlan0 up
+ifconfig wlan0 down
+ifconfig wlan0 up
