@@ -1,15 +1,12 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
-MAINTAINER Matt Longman <git@mattlongman.com>
+#MAINTAINER Matt Longman <git@mattlongman.com>
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 ENV LANG C.UTF-8
 
-#RUN apk update && \
-#apk add --no-cache bash iw hostapd networkmanager networkmanager-cli net-tools sudo dnsmasq iptables && \
-#rm -rf /var/cache/apk/*
 RUN apt update && \
 apt install -y bash iw hostapd network-manager net-tools sudo iproute2 dnsmasq iptables
 
