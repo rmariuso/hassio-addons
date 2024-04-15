@@ -303,15 +303,15 @@ fi
 # Start dnsmasq if DHCP is enabled in config
 if $(bashio::config.true "dhcp"); then
     logger "## Starting dnsmasq daemon" 1
-    dnsmasq -C ${DIR}/dnsmasq/dnsmasq.conf
+    dnsmasq -C "${DIR}/dnsmasq/dnsmasq.conf"
 fi
 
 logger "## Starting hostapd daemon" 1
 # If debug level is greater than 1, start hostapd in debug mode
 if [ $DEBUG -gt 1 ]; then
-    hostapd -d ${DIR}/hostapd/hostapd.conf & wait ${!}
+    hostapd -d "${DIR}/hostapd/hostapd.conf" & wait ${!}
 else
-    hostapd ${DIR}/hostapd/hostapd.conf & wait ${!}
+    hostapd "${DIR}/hostapd/hostapd.conf" & wait ${!}
 fi
 
 
