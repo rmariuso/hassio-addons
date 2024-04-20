@@ -12,11 +12,11 @@ arch:
   - armv7
 map: 
   - config:rw
-ingress: true
+#ingress: true
 init: false
 boot: manual
 host_network: true
-#udev: true
+udev: true
 apparmor: true
 host_dbus: true
 privileged:
