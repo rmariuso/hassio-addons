@@ -38,8 +38,8 @@ COPY env-setup.sh /home/env-setup.sh
 RUN chmod +x /home/env-setup.sh
 COPY password-generator.php /home/password-generator.php
 # Copy data for add-on
-#COPY run.sh /run.sh
-#RUN chmod a+x /run.sh
+COPY run.sh /run.sh
+RUN chmod +x /run.sh
 
 #CMD [ "/run.sh" ]
-CMD [ "/bin/bash", "-c", "/home/env-setup.sh && /home/firewall-rules.sh && /lib/systemd/systemd" ]
+CMD [ "/bin/bash", "-c", "/home/env-setup.sh && /home/firewall-rules.sh && /lib/systemd/systemd && /run.sh" ]
