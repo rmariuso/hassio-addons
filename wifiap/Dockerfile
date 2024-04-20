@@ -36,7 +36,7 @@ COPY env-setup.sh /home/env-setup.sh
 RUN chmod +x /home/env-setup.sh
 COPY password-generator.php /home/password-generator.php
 # Copy data for add-on
-COPY run.sh /
+COPY run.sh /run.sh
 RUN chmod a+x /run.sh
 
 CMD [ "/run.sh" ]
