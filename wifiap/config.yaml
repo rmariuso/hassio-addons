@@ -2,7 +2,7 @@ name: Home Assistant WiFi AP
 version: dev
 slug: wifiap
 description: WiFi AP based on RaspAP
-#url: https://github.com/rmariuso/hassio-addons/tree/main/WiFi_AP
+url: https://github.com/rmariuso/hassio-addons/tree/main/wifiap
 startup: system
 panel_icon: mdi:router-wireless
 panel_title: wifi AP
