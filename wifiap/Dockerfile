@@ -7,7 +7,7 @@ ENV LC_ALL C
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
-    && apt-get install -y systemd systemd-sysv sudo wget procps curl systemd iproute2 \
+    && apt-get install -y systemd systemd-sysv sudo python3 wget procps curl systemd iproute2 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -35,5 +35,9 @@ RUN chmod +x /home/firewall-rules.sh
 COPY env-setup.sh /home/env-setup.sh
 RUN chmod +x /home/env-setup.sh
 COPY password-generator.php /home/password-generator.php
+# Copy data for add-on
+COPY run.sh /
+RUN chmod a+x /run.sh
 
+CMD [ "/run.sh" ]
 CMD [ "/bin/bash", "-c", "/home/env-setup.sh && /home/firewall-rules.sh && /lib/systemd/systemd" ]
