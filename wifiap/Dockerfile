@@ -6,7 +6,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ENV LANG C.UTF-8
 
 RUN apt update && \
-apt install -y bash iw hostapd network-manager net-tools sudo iproute2 dnsmasq iptables httpd procps
+apt install -y bash iw hostapd network-manager net-tools sudo iproute2 dnsmasq iptables lighttpd procps
 
 #COPY hostapd.conf /
 #COPY dnsmasq.conf /
