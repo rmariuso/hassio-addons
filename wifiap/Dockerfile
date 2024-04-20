@@ -14,5 +14,9 @@ apt install -y bash systemd systemd-sysv iw hostapd network-manager net-tools su
 #COPY run.sh /
 #RUN chmod a+x /run.sh
 #CMD [ "/run.sh" ]
+COPY /rootfs /
+RUN chmod a+x /etc/cont-init.d/*
+VOLUME [ "/sys/fs/cgroup" ]
+
 EXPOSE 80
 CMD [ "/sbin/init" ]
