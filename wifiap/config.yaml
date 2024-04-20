@@ -16,9 +16,10 @@ map:
 #init: false
 boot: manual
 host_network: true
-udev: true
-apparmor: true
-host_dbus: true
+#udev: true
+#apparmor: true
+tmpfs: true
+#host_dbus: true
 privileged:
   - SYS_ADMIN
   - NET_ADMIN
