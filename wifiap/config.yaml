@@ -22,6 +22,8 @@ host_dbus: true
 privileged:
   - SYS_ADMIN
   - NET_ADMIN
+ports:
+  8000/tcp: 8000
 options:
   ssid:
   wpa_passphrase:
