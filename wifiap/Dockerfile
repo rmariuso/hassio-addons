@@ -18,5 +18,5 @@ COPY /rootfs /
 RUN chmod a+x /etc/cont-init.d/*
 VOLUME [ "/sys/fs/cgroup" ]
 
-EXPOSE 80
-CMD [ "/sbin/init" ]
+#EXPOSE 80
+#CMD [ "/sbin/init" ]
