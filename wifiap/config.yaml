@@ -1,18 +1,27 @@
----
-name: Hass.io Access Point
-version: 0.5.2.1
-slug: hassio-access-point
-description: Create a WiFi access point to directly connect devices to Home Assistant
-arch: [armhf, armv7, aarch64, amd64, i386]
-url: https://github.com/mattlongman/hassio-access-point
+name: Home Assistant WiFi AP
+version: dev
+slug: wifiap
+description: WiFi AP based on RaspAP
+#url: https://github.com/rmariuso/hassio-addons/tree/main/WiFi_AP
 startup: system
-boot: auto
+panel_icon: mdi:router-wireless
+panel_title: wifi AP
+arch:
+  - aarch64
+  - amd64
+  - armv7
+map: 
+  - config:rw
+ingress: true
+init: false
+boot: manual
 host_network: true
+#udev: true
 apparmor: true
 host_dbus: true
 privileged:
+  - SYS_ADMIN
   - NET_ADMIN
-init: false
 options:
   ssid:
   wpa_passphrase:
@@ -56,3 +65,9 @@ schema:
     - match(^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$)
   dnsmasq_config_override:
     - str?
+
+#  client_internet_access: true
+#  language: English
+#schema:
+#  client_internet_access: bool
+#  language: list(English|Deutsch|Español|Français|Italiano|Română)
