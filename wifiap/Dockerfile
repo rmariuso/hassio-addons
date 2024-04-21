@@ -38,10 +38,19 @@ COPY wpa_supplicant.conf /etc/wpa_supplicant/
 RUN chmod +x /home/firewall-rules.sh
 COPY env-setup.sh /home/env-setup.sh
 RUN chmod +x /home/env-setup.sh
+COPY dhcpcd-start.sh /home/dhcpcd-start.sh
+RUN chmod +x /home/dhcpcd-start.sh
+COPY dnsmasq-start.sh /home/dnsmasq-start.sh
+RUN chmod +x /home/dnsmasq-start.sh
+COPY hostapd-start.sh /home/hostapd-start.sh
+RUN chmod +x /home/hostapd-start.sh
+COPY lighttpd-start.sh /home/lighttpd-start.sh
+RUN chmod +x /home/lighttpd-start.sh
+
 COPY password-generator.php /home/password-generator.php
 # Copy data for add-on
-COPY run.sh /
-RUN chmod a+x /run.sh
+#COPY run.sh /
+#RUN chmod a+x /run.sh
 #CMD [ "/run.sh" ]
 #CMD [ "/bin/bash", "-c", "/home/env-setup.sh && /home/firewall-rules.sh && /lib/systemd/systemd && /run.sh" ]
-CMD [ "/bin/bash", "-c", "/home/env-setup.sh && /home/firewall-rules.sh && /run.sh" ]
+CMD [ "/bin/bash", "-c", "/home/env-setup.sh && /home/firewall-rules.sh && /dhcpcd-start.sh && /dnsmasq-start.sh && /hostapd-start.sh && /lighttpd-start.sh" ]
