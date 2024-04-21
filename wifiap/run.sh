@@ -19,6 +19,8 @@ if ! bashio::fs.directory_exists "${DIR}"; then
     mkdir -p "${DIR}/dhcpcd"
     mkdir -p "${DIR}/hostapd"
     mkdir -p "${DIR}/dnsmasq"
+    chown -R www-data:www-data "${DIR}/hostapd"
+    chown -R www-data:www-data "${DIR}/dnsmasq"
 
     #### dnsmasq
 	bashio::log.info "MV de ${DIR}/dnsmasq/dnsmasq.conf"
