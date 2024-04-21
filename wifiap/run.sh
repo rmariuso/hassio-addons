@@ -8,7 +8,7 @@ sleep 1
 echo $! > /container-pipes-pid
 # Start systemd as PID 1
 echo "Hello world!"
-#exec /usr/lib/systemd/systemd
+exec /usr/lib/systemd/systemd
 
 echo "Hello world!"
 #python3 -m http.server 8080
