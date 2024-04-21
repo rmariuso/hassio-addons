@@ -13,4 +13,4 @@ echo "Hello world!"
 #echo "Hello world!"
 #python3 -m http.server 8080
 
-/etc/init.d/dhcpcd start && /etc/init.d/dnsmasq start && sleep 4 && /etc/init.d/lighttpd start && /etc/init.d/hostapd start
+/etc/init.d/dhcpcd start && /etc/init.d/dnsmasq start && sleep 4 && /etc/init.d/lighttpd start && hostapd /etc/hostapd/hostapd.conf 1> /dev/null
