@@ -28,18 +28,17 @@ RUN rm -f /lib/systemd/system/multi-user.target.wants/* \
 
 VOLUME [ "/sys/fs/cgroup" ]
 
-EXPOSE 8081
+#EXPOSE 8081
 
-RUN curl -sL https://install.raspap.com | bash -s -- --yes --wireguard 0 --openvpn 0 --adblock 0 --rest 0
-COPY firewall-rules.sh /home/firewall-rules.sh
-COPY wpa_supplicant.conf /etc/wpa_supplicant/
-RUN chmod +x /home/firewall-rules.sh
-COPY env-setup.sh /home/env-setup.sh
-RUN chmod +x /home/env-setup.sh
-COPY password-generator.php /home/password-generator.php
+#RUN curl -sL https://install.raspap.com | bash -s -- --yes --wireguard 0 --openvpn 0 --adblock 0 --rest 0
+#COPY firewall-rules.sh /home/firewall-rules.sh
+#COPY wpa_supplicant.conf /etc/wpa_supplicant/
+#RUN chmod +x /home/firewall-rules.sh
+#COPY env-setup.sh /home/env-setup.sh
+#RUN chmod +x /home/env-setup.sh
+#COPY password-generator.php /home/password-generator.php
 # Copy data for add-on
-COPY run.sh /run.sh
-RUN chmod +x /run.sh
-
-#CMD [ "/run.sh" ]
-CMD [ "/bin/bash", "-c", "/home/env-setup.sh && /home/firewall-rules.sh && /lib/systemd/systemd && /run.sh" ]
+COPY run.sh /
+RUN chmod a+x /run.sh
+CMD [ "/run.sh" ]
+#CMD [ "/bin/bash", "-c", "/home/env-setup.sh && /home/firewall-rules.sh && /lib/systemd/systemd && /run.sh" ]

@@ -17,7 +17,7 @@ init: false
 boot: manual
 host_network: true
 #udev: true
-full_access: true
+#full_access: true
 #apparmor: true
 #host_dbus: true
 privileged:
