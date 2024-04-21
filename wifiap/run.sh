@@ -56,5 +56,6 @@ fi
 /etc/init.d/dnsmasq start
 sleep 4
 /etc/init.d/lighttpd start
-exec vnstatd -d --config "${DIR}/raspap/vnstat.conf"
+/etc/init.d/vnstatd start
+#exec vnstatd -d --config "${DIR}/raspap/vnstat.conf"
 exec hostapd -B ${DIR}/hostapd/hostapd.conf
