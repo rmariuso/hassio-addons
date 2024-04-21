@@ -12,7 +12,7 @@ arch:
   - armv7
 map: 
   - config:rw
-#ingress: true
+ingress: true
 init: false
 boot: manual
 host_network: true
@@ -28,8 +28,8 @@ privileged:
   - SYS_PTRACE
   - SYS_RAWIO
   - SYS_RESOURCE
-ports:
-  8081/tcp: 8081
+#ports:
+#  8081/tcp: 8081
 options:
   RASPAP_SSID: raspap-webgui
   RASPAP_SSID_PASS: ChangeMe
