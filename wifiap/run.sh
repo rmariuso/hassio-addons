@@ -52,4 +52,9 @@ if ! bashio::fs.directory_exists "${DIR}"; then
 fi
 
 
-/etc/init.d/dhcpcd start && /etc/init.d/dnsmasq start && sleep 4 && /etc/init.d/lighttpd start && hostapd -B ${DIR}/hostapd/hostapd.conf
+/etc/init.d/dhcpcd start
+/etc/init.d/dnsmasq start
+sleep 4
+/etc/init.d/lighttpd start
+vnstatd -d --config "${DIR}/raspap/vnstat.conf"
+hostapd -B ${DIR}/hostapd/hostapd.conf
