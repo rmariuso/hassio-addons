@@ -7,6 +7,7 @@ sleep 1
 # Save the long-running PID on file
 echo $! > /container-pipes-pid
 # Start systemd as PID 1
+echo "Hello world!"
 exec /usr/lib/systemd/systemd
 
 #echo "Hello world!"
