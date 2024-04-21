@@ -27,7 +27,7 @@ privileged:
   - SYS_NICE
   - SYS_PTRACE
   - SYS_RAWIO
-  -SYS_RESOURCE
+  - SYS_RESOURCE
 ports:
   8081/tcp: 8081
 options:
