@@ -53,4 +53,4 @@ RUN chmod +x /run.sh
 #CMD [ "/run.sh" ]
 #ENTRYPOINT ["/run.sh"]
 #CMD [ "/bin/bash", "-c", "/home/env-setup.sh && /home/firewall-rules.sh && /usr/lib/systemd/systemd" ]
-CMD [ "/bin/bash", "-c", "/home/env-setup.sh && /home/firewall-rules.sh && /home/dhcpcd-start.sh && /home/dnsmasq-start.sh && /home/hostapd-start.sh && /home/lighttpd-start.sh && /run.sh" ]
+CMD [ "/bin/bash", "-c", "/home/env-setup.sh && /home/firewall-rules.sh && /run.sh" ]
