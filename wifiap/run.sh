@@ -25,7 +25,11 @@ if ! bashio::fs.directory_exists "${DIR}"; then
     chown -R www-data:www-data "${DIR}/hostapd"
     chown -R www-data:www-data "${DIR}/dnsmasq"
     chown -R www-data:www-data /tmp
-    chown -R www-data:www-data /var/tmp 
+    chown -R www-data:www-data /var/tmp
+    grep -riIl '/etc/raspap/hostapd.ini' /var/www/html/ | xargs sed -i "s|/etc/raspap/hostapd.ini|${DIR_RASPAP}/hostapd.ini|g"
+    grep -riIl "/etc/dnsmasq.d" /var/www/html/ | xargs sed -i "s|/etc/dnsmasq.d|${DIR}/dnsmasq|g"
+    echo '' >> "${DIR_RASPAP}/hostapd.ini"	
+    grep -riIl 'sudo' /var/www/html/ | xargs sed -i "s|sudo||g"
 
 
     #### dnsmasq
@@ -48,4 +52,4 @@ if ! bashio::fs.directory_exists "${DIR}"; then
 fi
 
 
-/etc/init.d/dhcpcd start && /etc/init.d/dnsmasq start && sleep 4 && /etc/init.d/lighttpd start && hostapd /etc/hostapd/hostapd.conf 1> /dev/null
+/etc/init.d/dhcpcd start && /etc/init.d/dnsmasq start && sleep 4 && /etc/init.d/lighttpd start && hostapd -B /config/wifiap/hostapd/hostapd.conf
