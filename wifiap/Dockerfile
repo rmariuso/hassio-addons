@@ -43,4 +43,5 @@ COPY password-generator.php /home/password-generator.php
 COPY run.sh /
 RUN chmod a+x /run.sh
 #CMD [ "/run.sh" ]
-CMD [ "/bin/bash", "-c", "/home/env-setup.sh && /home/firewall-rules.sh && /lib/systemd/systemd && /run.sh" ]
+#CMD [ "/bin/bash", "-c", "/home/env-setup.sh && /home/firewall-rules.sh && /lib/systemd/systemd && /run.sh" ]
+CMD [ "/bin/bash", "-c", "/home/env-setup.sh && /home/firewall-rules.sh && /run.sh" ]
