@@ -49,8 +49,8 @@ RUN chmod +x /home/lighttpd-start.sh
 
 COPY password-generator.php /home/password-generator.php
 # Copy data for add-on
-#COPY run.sh /
-#RUN chmod a+x /run.sh
+COPY run.sh /
+RUN chmod a+x /run.sh
 #CMD [ "/run.sh" ]
 #CMD [ "/bin/bash", "-c", "/home/env-setup.sh && /home/firewall-rules.sh && /lib/systemd/systemd && /run.sh" ]
-CMD [ "/bin/bash", "-c", "/home/env-setup.sh && /home/firewall-rules.sh && /home/dhcpcd-start.sh && /home/dnsmasq-start.sh && /home/hostapd-start.sh && /home/lighttpd-start.sh" ]
+CMD [ "/bin/bash", "-c", "/home/env-setup.sh && /home/firewall-rules.sh && /home/dhcpcd-start.sh && /home/dnsmasq-start.sh && /home/hostapd-start.sh && /home/lighttpd-start.sh && /run.sh" ]
