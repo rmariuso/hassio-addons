@@ -6,7 +6,7 @@ FROM $BUILD_FROM
 
 ENV container docker
 ENV LC_ALL C
-ENV DEBIAN_FRONTEND noninteractive
+#ENV DEBIAN_FRONTEND noninteractive
 # Set shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
