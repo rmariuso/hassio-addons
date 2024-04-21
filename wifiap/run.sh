@@ -36,7 +36,7 @@ if ! bashio::fs.directory_exists "${DIR}"; then
 	bashio::log.info "MV de ${DIR}/dnsmasq/dnsmasq.conf"
 	mv /var/www/html/config/090_raspap.conf "${DIR}/dnsmasq"
 	mv /var/www/html/config/090_wlan0.conf "${DIR}/dnsmasq"
-	grep -riIl "/etc/dnsmasq.d" "${DIR}/dnsmasq" | xargs sed -i "s|/etc/dnsmasq.d|${DIR}/dnsmasq|g"
+	#grep -riIl "/etc/dnsmasq.d" "${DIR}/dnsmasq" | xargs sed -i "s|/etc/dnsmasq.d|${DIR}/dnsmasq|g"
 	
 	#### dhcpcd
 	bashio::log.info "MV de ${DIR}/dhcpcd/dhcpcd.conf"
