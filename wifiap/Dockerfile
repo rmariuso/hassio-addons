@@ -1,8 +1,8 @@
 # Some parts of code originated from https://github.com/j8r/dockerfiles/
 #ARG BUILD_FROM
 #FROM $BUILD_FROM
-
-FROM debian:bookworm
+FROM jrei/systemd-debian:bookworm
+#FROM debian:bookworm
 
 ENV container docker
 ENV LC_ALL C
