@@ -10,7 +10,7 @@ ENV DEBIAN_FRONTEND noninteractive
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN apt-get update \
-    && apt-get install -y systemd systemd-sysv sudo python3 wget procps curl systemd iproute2 \
+    && apt-get install -y systemd systemd-sysv sudo wget procps curl iproute2 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
