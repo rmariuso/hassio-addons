@@ -29,8 +29,6 @@ RUN rm -f /lib/systemd/system/multi-user.target.wants/* \
 
 VOLUME [ "/sys/fs/cgroup" ]
 
-#EXPOSE 8081
-
 RUN curl -sL https://install.raspap.com | bash -s -- --yes --wireguard 0 --openvpn 0 --adblock 0 --rest 0
 COPY config.php /var/www/html/includes/
 COPY firewall-rules.sh /home/firewall-rules.sh
@@ -40,7 +38,6 @@ COPY env-setup.sh /home/env-setup.sh
 RUN chmod +x /home/env-setup.sh
 COPY lighttpd.conf /etc/lighttpd/
 COPY password-generator.php /home/password-generator.php
-# Copy data for add-on
 COPY run.sh /
 RUN chmod a+x /run.sh
 #CMD [ "/run.sh" ]

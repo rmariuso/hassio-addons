@@ -57,4 +57,4 @@ fi
 sleep 4
 /etc/init.d/lighttpd start
 /etc/init.d/vnstat start
-exec hostapd ${DIR}/hostapd/hostapd.conf 1> /dev/null
+hostapd ${DIR}/hostapd/hostapd.conf 1> /dev/null
