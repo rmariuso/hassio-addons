@@ -19,17 +19,6 @@ if ! bashio::fs.directory_exists "${DIR}"; then
     mkdir -p "${DIR}/dhcpcd"
     mkdir -p "${DIR}/hostapd"
     mkdir -p "${DIR}/dnsmasq"
-    chown -R www-data:www-data /var/www/html
-    chown -R www-data:www-data "${DIR_RASPAP}"
-    chown -R www-data:www-data "${DIR}" 
-    chown -R www-data:www-data "${DIR}/hostapd"
-    chown -R www-data:www-data "${DIR}/dnsmasq"
-    chown -R www-data:www-data /tmp
-    chown -R www-data:www-data /var/tmp
-    grep -riIl '/etc/raspap/hostapd.ini' /var/www/html/ | xargs sed -i "s|/etc/raspap/hostapd.ini|${DIR_RASPAP}/hostapd.ini|g"
-    grep -riIl "/etc/dnsmasq.d" /var/www/html/ | xargs sed -i "s|/etc/dnsmasq.d|${DIR}/dnsmasq|g"
-    echo '' >> "${DIR_RASPAP}/hostapd.ini"	
-    grep -riIl 'sudo' /var/www/html/ | xargs sed -i "s|sudo||g"
 
 
     #### dnsmasq
@@ -50,6 +39,18 @@ if ! bashio::fs.directory_exists "${DIR}"; then
     mv /etc/vnstat.conf "${DIR_RASPAP}/vnstat.conf"
 
 fi
+
+chown -R www-data:www-data /var/www/html
+chown -R www-data:www-data "${DIR_RASPAP}"
+chown -R www-data:www-data "${DIR}" 
+chown -R www-data:www-data "${DIR}/hostapd"
+chown -R www-data:www-data "${DIR}/dnsmasq"
+chown -R www-data:www-data /tmp
+chown -R www-data:www-data /var/tmp
+grep -riIl '/etc/raspap/hostapd.ini' /var/www/html/ | xargs sed -i "s|/etc/raspap/hostapd.ini|${DIR_RASPAP}/hostapd.ini|g"
+grep -riIl "/etc/dnsmasq.d" /var/www/html/ | xargs sed -i "s|/etc/dnsmasq.d|${DIR}/dnsmasq|g"
+echo '' >> "${DIR_RASPAP}/hostapd.ini"	
+grep -riIl 'sudo' /var/www/html/ | xargs sed -i "s|sudo||g"
 
 
 /etc/init.d/dhcpcd start
