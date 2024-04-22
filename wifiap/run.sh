@@ -53,7 +53,8 @@ echo '' >> "${DIR_RASPAP}/hostapd.ini"
 grep -riIl 'sudo' /var/www/html/ | xargs sed -i "s|sudo||g"
 
 
-/etc/init.d/dhcpcd start
+#/etc/init.d/dhcpcd start
+dhcpcd -f ${DIR}/dhcpcd/dhcpcd.conf
 /etc/init.d/dnsmasq start
 sleep 4
 /etc/init.d/lighttpd start
