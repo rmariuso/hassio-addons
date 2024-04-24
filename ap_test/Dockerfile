@@ -1,6 +1,6 @@
 # Some parts of code originated from https://github.com/j8r/dockerfiles/
 #FROM docker:dind
-FROM jrei:systemd-debian
+FROM jrei/systemd-debian:bookworm
 
 ENV container docker
 #SHELL ["/bin/bash", "-o", "pipefail", "-c"]
