@@ -56,7 +56,7 @@ RUN apt-get install -y --no-install-recommends \
         systemd      \
         systemd-sysv \
         cron \
-        sh    \
+        bash    \
         anacron
 
 RUN apt-get clean
@@ -142,7 +142,7 @@ VOLUME [ "/sys/fs/cgroup", "/run", "/run/lock", "/tmp" ]
 COPY run.sh /
 RUN chmod a+x /run.sh
 #CMD [ "/run.sh" ]
-#CMD [ "/bin/bash", "-c", "/sbin/init" && "/run.sh" ]
-CMD [ "/sbin/init" && "/run.sh" ]
+CMD [ "/bin/bash", "-c", "/sbin/init" && "/run.sh" ]
+#CMD [ "/sbin/init" && "/run.sh" ]
 
 #CMD [ "/sbin/init" ]
