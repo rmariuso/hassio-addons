@@ -1,5 +1,3 @@
-#!/usr/bin/with-contenv bashio
+#!/bin/sh
 
 echo "Hello world!"
-
-bashio::log.info "Init..."
