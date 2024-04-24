@@ -57,6 +57,7 @@ RUN apt-get install -y --no-install-recommends \
         systemd-sysv \
         cron \
         mc \
+        python3 \
         anacron
 
 RUN apt-get clean
