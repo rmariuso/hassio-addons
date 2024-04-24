@@ -2,7 +2,7 @@
 FROM docker:dind
 
 ENV container docker
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+#SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 COPY run.sh /
 RUN chmod a+x /run.sh
