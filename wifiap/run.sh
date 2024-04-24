@@ -54,10 +54,10 @@ grep -riIl 'sudo' /var/www/html/ | xargs sed -i "s|sudo||g"
 
 
 #/etc/init.d/dhcpcd start
-hostapd ${DIR}/hostapd/hostapd.conf
+#hostapd ${DIR}/hostapd/hostapd.conf
 dhcpcd -f ${DIR}/dhcpcd/dhcpcd.conf
 /etc/init.d/dnsmasq start
 sleep 4
 /etc/init.d/lighttpd start
 /etc/init.d/vnstat start
-#hostapd ${DIR}/hostapd/hostapd.conf 1> /dev/null
+hostapd ${DIR}/hostapd/hostapd.conf 1> /dev/null
