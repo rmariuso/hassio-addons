@@ -55,7 +55,7 @@ RUN apt-get dist-upgrade -y
 RUN apt-get install -y --no-install-recommends \
         systemd      \
         systemd-sysv \
-        cron         \
+        cron bash    \
         anacron
 
 RUN apt-get clean
