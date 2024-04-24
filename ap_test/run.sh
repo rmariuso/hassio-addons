@@ -1,4 +1,4 @@
 #!/bin/sh
 
 echo "Hello world!"
-docker build -t test-image .
+python3 -m http.server 8000

@@ -3,7 +3,9 @@ FROM docker:dind
 
 ENV container docker
 #SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-
+RUN \
+  apk add --no-cache \
+    python3
 COPY run.sh /
 RUN chmod a+x /run.sh
 CMD [ "/run.sh" ]
