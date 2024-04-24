@@ -52,6 +52,10 @@ grep -riIl "/etc/dnsmasq.d" /var/www/html/ | xargs sed -i "s|/etc/dnsmasq.d|${DI
 echo '' >> "${DIR_RASPAP}/hostapd.ini"	
 grep -riIl 'sudo' /var/www/html/ | xargs sed -i "s|sudo||g"
 
+cp /config/wifiap/dhcpcd/dhcpcd.conf /etc/dhcpcd.conf
+cp /config/wifiap/dnsmasq/090_raspap.conf /etc/dnsmasq.d
+cp /config/wifiap/dnsmasq/090_wlan0.conf /etc/dnsmasq.d
+
 ifconfig wlan0 10.3.141.1 netmask 255.255.255.0 broadcast 10.3.141.255
 #/etc/init.d/dhcpcd start
 #hostapd ${DIR}/hostapd/hostapd.conf
