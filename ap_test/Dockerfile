@@ -145,4 +145,4 @@ RUN chmod a+x /run.sh
 #CMD [ "/bin/bash", "-c", "/sbin/init" && "/run.sh" ]
 #CMD [ "/sbin/init" && "/run.sh" ]
 
-CMD [ "/sbin/init 1> /dev/null" ]
+CMD [ "/sbin/init" 1> /dev/null ]
