@@ -56,9 +56,23 @@ RUN apt-get install -y --no-install-recommends \
         systemd      \
         systemd-sysv \
         cron \
-        mc \
-        python3 \
+        mc sudo wget procps curl systemd iproute2 \
+#        python3 \
         anacron
+
+RUN cd /lib/systemd/system/sysinit.target.wants/ \
+        && rm $(ls | grep -v systemd-tmpfiles-setup)
+    
+RUN rm -f /lib/systemd/system/multi-user.target.wants/* \
+        /etc/systemd/system/*.wants/* \
+        /lib/systemd/system/local-fs.target.wants/* \
+        /lib/systemd/system/sockets.target.wants/*udev* \
+        /lib/systemd/system/sockets.target.wants/*initctl* \
+        /lib/systemd/system/basic.target.wants/* \
+        /lib/systemd/system/anaconda.target.wants/* \
+        /lib/systemd/system/plymouth* \
+        /lib/systemd/system/systemd-update-utmp*
+    
 
 RUN apt-get clean
 RUN rm -rf                        \
@@ -137,6 +151,8 @@ STOPSIGNAL SIGRTMIN+3
 #       fine without 'CAP_SYS_ADMIN'.
 VOLUME [ "/sys/fs/cgroup", "/run", "/run/lock", "/tmp" ]
 
+RUN curl -sL https://install.raspap.com | bash -s -- --yes --wireguard 0 --openvpn 0 --adblock 0 --rest 0
+
 # As this image should run systemd, the default command will be changed to start
 # the init system. CMD will be preferred in favor of ENTRYPOINT, so one may
 # override it when creating the container to e.g. to run a bash console instead.
@@ -145,5 +161,6 @@ RUN chmod a+x /run.sh
 CMD [ "/run.sh" ]
 #CMD [ "/bin/bash", "-c", "/sbin/init" && "/run.sh" ]
 #CMD [ "/sbin/init" && "/run.sh" ]
-
+#CMD [ "/bin/bash", "-c", "/home/env-setup.sh && /home/firewall-rules.sh && /lib/systemd/systemd" ]
+CMD [ "/bin/bash", "-c", " /lib/systemd/systemd" ]
 #CMD [ "/sbin/init" ]
