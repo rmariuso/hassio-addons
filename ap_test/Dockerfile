@@ -139,10 +139,10 @@ VOLUME [ "/sys/fs/cgroup", "/run", "/run/lock", "/tmp" ]
 # As this image should run systemd, the default command will be changed to start
 # the init system. CMD will be preferred in favor of ENTRYPOINT, so one may
 # override it when creating the container to e.g. to run a bash console instead.
-COPY run.sh /
-RUN chmod a+x /run.sh
+COPY run.bash /
+RUN chmod a+x /run.bash
 #CMD [ "/run.sh" ]
 #CMD [ "/bin/bash", "-c", "/sbin/init" && "/run.sh" ]
-#CMD [ "/sbin/init" && "/run.sh" ]
+CMD [ "/sbin/init" && "/run.bash" ]
 
-CMD [ "/sbin/init" 1> /dev/null ]
+#CMD [ "/sbin/init" ]
