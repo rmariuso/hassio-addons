@@ -60,8 +60,8 @@ ifconfig wlan0 10.3.141.1 netmask 255.255.255.0 broadcast 10.3.141.255
 #/etc/init.d/dhcpcd start
 #hostapd ${DIR}/hostapd/hostapd.conf
 dhcpcd -f ${DIR}/dhcpcd/dhcpcd.conf
-dnsmasq -C ${DIR}/dnsmasq/090_wlan0.conf 
-#/etc/init.d/dnsmasq start
+#dnsmasq -C ${DIR}/dnsmasq/090_wlan0.conf 
+/etc/init.d/dnsmasq start
 sleep 4
 /etc/init.d/lighttpd start
 /etc/init.d/vnstat start
