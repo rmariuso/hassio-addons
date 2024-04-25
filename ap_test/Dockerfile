@@ -159,13 +159,12 @@ RUN chmod +x /home/firewall-rules.sh
 COPY password-generator.php /home/password-generator.php
 COPY run.sh /
 RUN chmod a+x /run.sh
-ENTRYPOINT ["tail", "-f", "/dev/null"]
 CMD [ "/home/firewall-rules.sh" ]
 
 #CMD [ "/sbin/init" && sleep 5 ]
 #CMD [ "/bin/bash", "-c", "/run.sh" ]
-
 #CMD [ "/run.sh" ]
 #CMD [ "/bin/bash", "-c", "/home/env-setup.sh && /home/firewall-rules.sh && /lib/systemd/systemd" ]
 #CMD [ "/bin/bash", "-c", " /lib/systemd/systemd" ]
 CMD [ "/sbin/init" ]
+CMD ["tail", "-f", "/dev/null"]
