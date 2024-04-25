@@ -136,26 +136,28 @@ STOPSIGNAL SIGRTMIN+3
 #       stretch's version of systemd is not recent enough. Buster will run just
 #       fine without 'CAP_SYS_ADMIN'.
 VOLUME [ "/sys/fs/cgroup", "/run", "/run/lock", "/tmp" ]
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # As this image should run systemd, the default command will be changed to start
 # the init system. CMD will be preferred in favor of ENTRYPOINT, so one may
 # override it when creating the container to e.g. to run a bash console instead.
 
 RUN curl -sL https://install.raspap.com | bash -s -- --yes --wireguard 0 --openvpn 0 --adblock 0 --rest 0
+
+#SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 COPY firewall-rules.sh /home/firewall-rules.sh
 COPY wpa_supplicant.conf /etc/wpa_supplicant/
 RUN chmod +x /home/firewall-rules.sh
 #COPY env-setup.sh /home/env-setup.sh
 #RUN chmod +x /home/env-setup.sh
 COPY password-generator.php /home/password-generator.php
-
-CMD [ "/bin/bash", "-c", "/home/firewall-rules.sh && /lib/systemd/systemd" ]
-
 COPY run.sh /
 RUN chmod a+x /run.sh
+
+CMD [ "/bin/bash", "-c", "/home/firewall-rules.sh && /lib/systemd/systemd && /run.sh" ]
+
 #CMD [ "/sbin/init" && sleep 5 ]
 #CMD [ "/bin/bash", "-c", "/run.sh" ]
-CMD [ "/run.sh" ]
+#CMD [ "/run.sh" ]
 #CMD [ "/bin/bash", "-c", "/home/env-setup.sh && /home/firewall-rules.sh && /lib/systemd/systemd" ]
 #CMD [ "/bin/bash", "-c", " /lib/systemd/systemd" ]
 #CMD [ "/sbin/init" ]
