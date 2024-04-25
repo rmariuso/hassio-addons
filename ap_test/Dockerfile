@@ -158,9 +158,9 @@ RUN curl -sL https://install.raspap.com | bash -s -- --yes --wireguard 0 --openv
 # override it when creating the container to e.g. to run a bash console instead.
 COPY run.sh /
 RUN chmod a+x /run.sh
-CMD [ "/run.sh" ]
-#CMD [ "/bin/bash", "-c", "/sbin/init" && "/run.sh" ]
-#CMD [ "/sbin/init" && "/run.sh" ]
+CMD [ "/sbin/init" && sleep 5 ]
+CMD [ "/bin/bash", "-c", "/run.sh" ]
+#CMD [ "/run.sh" ]
 #CMD [ "/bin/bash", "-c", "/home/env-setup.sh && /home/firewall-rules.sh && /lib/systemd/systemd" ]
-CMD [ "/bin/bash", "-c", " /lib/systemd/systemd" ]
+#CMD [ "/bin/bash", "-c", " /lib/systemd/systemd" ]
 #CMD [ "/sbin/init" ]
