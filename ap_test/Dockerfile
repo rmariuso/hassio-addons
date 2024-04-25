@@ -160,7 +160,7 @@ COPY password-generator.php /home/password-generator.php
 COPY run.sh /
 RUN chmod a+x /run.sh
 
-CMD [ "/bin/bash", "-c", "/home/firewall-rules.sh && /lib/systemd/systemd && /run.sh" ]
+CMD [ "/bin/bash", "-c", "/home/firewall-rules.sh && /sbin/init && sleep 5 && /run.sh" ]
 
 #CMD [ "/sbin/init" && sleep 5 ]
 #CMD [ "/bin/bash", "-c", "/run.sh" ]
