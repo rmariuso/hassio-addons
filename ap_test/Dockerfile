@@ -50,6 +50,12 @@ RUN echo 'debconf debconf/frontend select teletype' | debconf-set-selections
 #
 # NOTE: No syslog daemon will be installed, as systemd's journald should fit
 #       most needs. Please file an issue if you think this should be changed.
+
+ENV container docker
+ENV LC_ALL C
+ENV DEBIAN_FRONTEND noninteractive
+
+
 RUN apt-get update
 RUN apt-get dist-upgrade -y
 RUN apt-get install -y --no-install-recommends \
@@ -57,6 +63,7 @@ RUN apt-get install -y --no-install-recommends \
         systemd-sysv \
         cron \
         mc sudo wget procps curl iproute2 \
+        lighttpd git hostapd dnsmasq iptables-persistent vnstat qrencode php8.2-cgi jq isoquery \
         python3 \
         anacron
 
