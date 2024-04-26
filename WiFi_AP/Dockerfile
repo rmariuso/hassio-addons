@@ -25,14 +25,14 @@ COPY /rootfs /
 #RUN sudo cp /tmp/50-raspap-router.conf /etc/lighttpd/conf-available/
 #RUN sudo ln -s /etc/lighttpd/conf-available/50-raspap-router.conf /etc/lighttpd/conf-enabled/50-raspap-router.conf
    
-RUN mkdir -p /config/wifiap/1
-RUN sudo mkdir /config/wifiap/backups
-RUN sudo mkdir /config/wifiap/networking
-RUN sudo mkdir /config/wifiap/hostapd
-RUN sudo mkdir /config/wifiap/dhcpcd
-RUN sudo mkdir /config/wifiap/dnsmasq
-RUN sudo mkdir /config/wifiap/lighttpd
-RUN sudo mkdir /config/wifiap/system
+#RUN mkdir -p /config/wifiap/1
+#RUN sudo mkdir /config/wifiap/backups
+#RUN sudo mkdir /config/wifiap/networking
+#RUN sudo mkdir /config/wifiap/hostapd
+#RUN sudo mkdir /config/wifiap/dhcpcd
+#RUN sudo mkdir /config/wifiap/dnsmasq
+#RUN sudo mkdir /config/wifiap/lighttpd
+#RUN sudo mkdir /config/wifiap/system
 RUN sudo chown -R www-data:www-data /var/www/html
 RUN sudo chown -R www-data:www-data /config/wifiap
 RUN sudo mv /var/www/html/installers/enablelog.sh /config/wifiap/hostapd
