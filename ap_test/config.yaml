@@ -12,7 +12,7 @@ arch:
   - armv7
 map: 
   - config:rw
-ingress: true
+#ingress: true
 init: false
 boot: manual
 host_network: true
