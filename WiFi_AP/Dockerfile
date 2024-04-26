@@ -16,14 +16,14 @@ RUN service lighttpd restart
 RUN rm -Rf /var/www/html
 RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
 COPY /rootfs /
-#RUN WEBROOT="/var/www/html" \
-#    CONFSRC="$WEBROOT/config/50-raspap-router.conf" \
-#    LTROOT=$(grep "server.document-root" /etc/lighttpd/lighttpd.conf | awk -F '=' '{print $2}' | tr -d " \"") \
-#    HTROOT=${WEBROOT/$LTROOT} \
-#    HTROOT=$(echo "$HTROOT" | sed -e 's/\/$//') \
-#    awk "{gsub(\"/REPLACE_ME\",\"$HTROOT\")}1" $CONFSRC > /tmp/50-raspap-router.conf \
-#    sudo cp /tmp/50-raspap-router.conf /etc/lighttpd/conf-available/ \
-#    sudo ln -s /etc/lighttpd/conf-available/50-raspap-router.conf /etc/lighttpd/conf-enabled/50-raspap-router.conf
+RUN WEBROOT="/var/www/html"
+RUN CONFSRC="$WEBROOT/config/50-raspap-router.conf"
+RUN LTROOT=$(grep "server.document-root" /etc/lighttpd/lighttpd.conf | awk -F '=' '{print $2}' | tr -d " \"")
+RUN HTROOT=${WEBROOT/$LTROOT}
+RUN HTROOT=$(echo "$HTROOT" | sed -e 's/\/$//')
+RUN awk "{gsub(\"/REPLACE_ME\",\"$HTROOT\")}1" $CONFSRC > /tmp/50-raspap-router.conf
+RUN sudo cp /tmp/50-raspap-router.conf /etc/lighttpd/conf-available/
+RUN sudo ln -s /etc/lighttpd/conf-available/50-raspap-router.conf /etc/lighttpd/conf-enabled/50-raspap-router.conf
    
 RUN sudo mkdir /config/wifiap/ \
     sudo mkdir /config/wifiap/backups \
