@@ -8,13 +8,17 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN apt-get update
 RUN apt-get install -y git iptables procps network-manager iproute2 iw wpasupplicant net-tools
 RUN apt-get install -y sudo mc hostapd qrencode dnsmasq jq lighttpd vnstat isoquery locales
-RUN apt-get install -y dhcpcd5
+RUN apt-get install -y dhcpcd5 python3
 RUN apt-get install -y php8.2-cgi
 
 RUN rm -Rf /var/www/html
 RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
  
-COPY /rootfs /
-RUN chmod a+x /etc/cont-init.d/*
+#COPY /rootfs /
+#RUN chmod a+x /etc/cont-init.d/*
 
-VOLUME [ "/sys/fs/cgroup" ]
+#VOLUME [ "/sys/fs/cgroup" ]
+
+COPY run.sh /
+RUN chmod a+x /run.sh
+CMD [ "/run.sh" ]
