@@ -1,8 +1,7 @@
 <?php
 
 define('RASPI_BRAND_TEXT', 'wifiAP');
-define('HA_CONFIG', '/config/wifiap');
-define('RASPI_CONFIG', HA_CONFIG.'/raspap');
+define('RASPI_CONFIG', '/config/wifiap');
 define('RASPI_CONFIG_NETWORK', RASPI_CONFIG.'/networking/defaults.json');
 define('RASPI_CONFIG_PROVIDERS', 'config/vpn-providers.json');
 define('RASPI_CONFIG_API', RASPI_CONFIG.'/api');
@@ -16,14 +15,14 @@ define('RASPI_LOG_SIZE_LIMIT', 64);
 // Constants for configuration file paths.
 // These are typical for default RPi installs. Modify if needed.
 define('RASPI_DNSMASQ_LEASES', '/var/lib/misc/dnsmasq.leases');
-define('RASPI_DNSMASQ_PREFIX', HA_CONFIG.'/dnsmasq/090_');
+define('RASPI_DNSMASQ_PREFIX', RASPI_CONFIG.'/dnsmasq/090_');
 define('RASPI_ADBLOCK_LISTPATH', '/etc/raspap/adblock/');
 define('RASPI_ADBLOCK_CONFIG', RASPI_DNSMASQ_PREFIX.'adblock.conf');
-define('RASPI_HOSTAPD_CONFIG', HA_CONFIG.'/hostapd/hostapd.conf');
-define('RASPI_DHCPCD_CONFIG', HA_CONFIG.'/dhcpcd/dhcpcd.conf');
+define('RASPI_HOSTAPD_CONFIG', RASPI_CONFIG.'/hostapd/hostapd.conf');
+define('RASPI_DHCPCD_CONFIG', RASPI_CONFIG.'/dhcpcd/dhcpcd.conf');
 define('RASPI_DHCPCD_LOG', '/var/log/dnsmasq.log');
 define('RASPI_HOSTAPD_LOG', '/tmp/hostapd.log');
-define('RASPI_WPA_SUPPLICANT_CONFIG', HA_CONFIG.'/wpa_supplicant/wpa_supplicant.conf');
+define('RASPI_WPA_SUPPLICANT_CONFIG', RASPI_CONFIG.'/wpa_supplicant/wpa_supplicant.conf');
 define('RASPI_HOSTAPD_CTRL_INTERFACE', '/var/run/hostapd');
 define('RASPI_WPA_CTRL_INTERFACE', '/var/run/wpa_supplicant');
 define('RASPI_OPENVPN_CLIENT_PATH', '/etc/openvpn/client/');
