@@ -22,7 +22,7 @@ COPY /rootfs /
 #RUN HTROOT=${WEBROOT/$LTROOT}
 #RUN HTROOT=$(echo "$HTROOT" | sed -e 's/\/$//')
 #RUN awk "{gsub(\"/REPLACE_ME\",\"$HTROOT\")}1" $CONFSRC > /tmp/50-raspap-router.conf
-3RUN sudo cp /tmp/50-raspap-router.conf /etc/lighttpd/conf-available/
+#RUN sudo cp /tmp/50-raspap-router.conf /etc/lighttpd/conf-available/
 #RUN sudo ln -s /etc/lighttpd/conf-available/50-raspap-router.conf /etc/lighttpd/conf-enabled/50-raspap-router.conf
    
 RUN sudo mkdir /config/wifiap/
