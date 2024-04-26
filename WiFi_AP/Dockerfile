@@ -25,7 +25,7 @@ COPY /rootfs /
 #RUN sudo cp /tmp/50-raspap-router.conf /etc/lighttpd/conf-available/
 #RUN sudo ln -s /etc/lighttpd/conf-available/50-raspap-router.conf /etc/lighttpd/conf-enabled/50-raspap-router.conf
    
-mkdir /config/wifiap/
+RUN mkdir "/config/wifiap/"
 RUN sudo mkdir /config/wifiap/backups
 RUN sudo mkdir /config/wifiap/networking
 RUN sudo mkdir /config/wifiap/hostapd
