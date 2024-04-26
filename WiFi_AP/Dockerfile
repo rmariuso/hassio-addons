@@ -16,42 +16,42 @@ RUN service lighttpd restart
 RUN rm -Rf /var/www/html
 RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
 COPY /rootfs /
-RUN WEBROOT="/var/www/html"
-RUN CONFSRC="$WEBROOT/config/50-raspap-router.conf"
-RUN LTROOT=$(grep "server.document-root" /etc/lighttpd/lighttpd.conf | awk -F '=' '{print $2}' | tr -d " \"")
-RUN HTROOT=${WEBROOT/$LTROOT}
-RUN HTROOT=$(echo "$HTROOT" | sed -e 's/\/$//')
-RUN awk "{gsub(\"/REPLACE_ME\",\"$HTROOT\")}1" $CONFSRC > /tmp/50-raspap-router.conf
-RUN sudo cp /tmp/50-raspap-router.conf /etc/lighttpd/conf-available/
-RUN sudo ln -s /etc/lighttpd/conf-available/50-raspap-router.conf /etc/lighttpd/conf-enabled/50-raspap-router.conf
+#RUN WEBROOT="/var/www/html"
+#RUN CONFSRC="$WEBROOT/config/50-raspap-router.conf"
+#RUN LTROOT=$(grep "server.document-root" /etc/lighttpd/lighttpd.conf | awk -F '=' '{print $2}' | tr -d " \"")
+#RUN HTROOT=${WEBROOT/$LTROOT}
+#RUN HTROOT=$(echo "$HTROOT" | sed -e 's/\/$//')
+#RUN awk "{gsub(\"/REPLACE_ME\",\"$HTROOT\")}1" $CONFSRC > /tmp/50-raspap-router.conf
+3RUN sudo cp /tmp/50-raspap-router.conf /etc/lighttpd/conf-available/
+#RUN sudo ln -s /etc/lighttpd/conf-available/50-raspap-router.conf /etc/lighttpd/conf-enabled/50-raspap-router.conf
    
-RUN sudo mkdir /config/wifiap/ \
-    sudo mkdir /config/wifiap/backups \
-    sudo mkdir /config/wifiap/networking \
-    sudo mkdir /config/wifiap/hostapd \
-    sudo mkdir /config/wifiap/dhcpcd \
-    sudo mkdir /config/wifiap/dnsmasq \
-    sudo mkdir /config/wifiap/lighttpd \
-    sudo mkdir /config/wifiap/system \
-    sudo chown -R www-data:www-data /var/www/html \
-    sudo chown -R www-data:www-data /config/wifiap \
-    sudo mv /var/www/html/installers/enablelog.sh /config/wifiap/hostapd \
-    sudo mv /var/www/html/installers/disablelog.sh /config/wifiap/hostapd \
-    sudo mv /var/www/html/installers/servicestart.sh /config/wifiap/hostapd \
-    sudo mv /var/www/html/installers/debuglog.sh /config/wifiap/system \
-    sudo chown -c root:root /config/wifiap/hostapd/*.sh \
-    sudo chmod 750 /config/wifiap/hostapd/*.sh \
-    sudo chown -c root:root /config/wifiap/system/*.sh \
-    sudo chmod 750 /config/wifiap/system/*.sh \
-    sudo cp /var/www/html/installers/configport.sh /config/wifiap/lighttpd \
-    sudo chown -c root:root /config/wifiap/lighttpd/*.sh \
-    sudo mv /etc/default/hostapd ~/default_hostapd.old \
-    sudo cp /etc/hostapd/hostapd.conf ~/hostapd.conf.old \
-    sudo cp /var/www/html/config/hostapd.conf /config/wifiap/hostapd/hostapd.conf \
-    sudo cp /var/www/html/config/dhcpcd.conf /config/wifiap/dhcpcd/dhcpcd.conf \
-    sudo cp /var/www/html/config/defaults.json /config/wifiap/networking/ \
-    sudo cp /var/www/html/config/raspap-bridge-br0.netdev /etc/systemd/network/raspap-bridge-br0.netdev \
-    sudo cp /var/www/html/config/raspap-br0-member-eth0.network /etc/systemd/network/raspap-br0-member-eth0.network
+RUN sudo mkdir /config/wifiap/
+RUN sudo mkdir /config/wifiap/backups
+RUN sudo mkdir /config/wifiap/networking
+RUN sudo mkdir /config/wifiap/hostapd
+RUN sudo mkdir /config/wifiap/dhcpcd
+RUN sudo mkdir /config/wifiap/dnsmasq
+RUN sudo mkdir /config/wifiap/lighttpd
+RUN sudo mkdir /config/wifiap/system
+RUN sudo chown -R www-data:www-data /var/www/html
+RUN sudo chown -R www-data:www-data /config/wifiap
+RUN sudo mv /var/www/html/installers/enablelog.sh /config/wifiap/hostapd
+RUN sudo mv /var/www/html/installers/disablelog.sh /config/wifiap/hostapd
+RUN sudo mv /var/www/html/installers/servicestart.sh /config/wifiap/hostapd
+RUN sudo mv /var/www/html/installers/debuglog.sh /config/wifiap/system
+RUN sudo chown -c root:root /config/wifiap/hostapd/*.sh
+RUN sudo chmod 750 /config/wifiap/hostapd/*.sh
+RUN sudo chown -c root:root /config/wifiap/system/*.sh
+RUN sudo chmod 750 /config/wifiap/system/*.sh
+RUN sudo cp /var/www/html/installers/configport.sh /config/wifiap/lighttpd
+RUN sudo chown -c root:root /config/wifiap/lighttpd/*.sh
+RUN sudo mv /etc/default/hostapd ~/default_hostapd.old
+RUN sudo cp /etc/hostapd/hostapd.conf ~/hostapd.conf.old
+RUN sudo cp /var/www/html/config/hostapd.conf /config/wifiap/hostapd/hostapd.conf
+RUN sudo cp /var/www/html/config/dhcpcd.conf /config/wifiap/dhcpcd/dhcpcd.conf
+RUN sudo cp /var/www/html/config/defaults.json /config/wifiap/networking/
+RUN sudo cp /var/www/html/config/raspap-bridge-br0.netdev /etc/systemd/network/raspap-bridge-br0.netdev
+RUN sudo cp /var/www/html/config/raspap-br0-member-eth0.network /etc/systemd/network/raspap-br0-member-eth0.network
 
     #RUN chmod a+x /etc/cont-init.d/*
 
