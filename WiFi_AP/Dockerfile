@@ -3,7 +3,7 @@
 #FROM $BUILD_FROM
 FROM debian:bookworm
 # Set shell
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+#SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN apt-get update
 RUN apt-get install -y git iptables procps network-manager iproute2 iw wpasupplicant net-tools
