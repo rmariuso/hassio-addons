@@ -17,5 +17,5 @@ RUN apt-get install -y php8.2-cgi
 #RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
 COPY /rootfs /
 COPY run.sh /
-#RUN chmod a+x /run.sh
+RUN chmod a+x /run.sh
 #CMD [ "/run.sh" ]
