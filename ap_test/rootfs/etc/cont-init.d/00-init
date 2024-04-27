@@ -1,13 +1,13 @@
 #!/usr/bin/with-contenv bashio
 
-mkdir -p /config/wifiap/
-mkdir -p /config/wifiap/backups
-mkdir -p /config/wifiap/networking
-mkdir -p /config/wifiap/hostapd
-mkdir -p /config/wifiap/dhcpcd
-mkdir -p /config/wifiap/dnsmasq
-mkdir -p /config/wifiap/lighttpd
-mkdir -p /config/wifiap/system
+#mkdir -p /config/wifiap/
+#mkdir -p /config/wifiap/backups
+#mkdir -p /config/wifiap/networking
+#mkdir -p /config/wifiap/hostapd
+#mkdir -p /config/wifiap/dhcpcd
+#mkdir -p /config/wifiap/dnsmasq
+#mkdir -p /config/wifiap/lighttpd
+#mkdir -p /config/wifiap/system
 
 chown -R www-data:www-data /var/www/html
 chown -R www-data:www-data /config/wifiap
