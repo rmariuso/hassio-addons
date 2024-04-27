@@ -19,4 +19,5 @@ COPY run.sh /
 RUN chmod a+x /run.sh
 WORKDIR /app
 COPY rootfs /
+WORKDIR /
 CMD [ "/run.sh" ]
