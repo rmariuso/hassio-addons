@@ -15,10 +15,10 @@ RUN apt-get install -y php8.2-cgi
 RUN lighttpd-enable-mod fastcgi-php
 RUN service lighttpd restart
 
-#RUN rm -Rf /var/www/html
-#RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
+RUN rm -Rf /var/www/html
+RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
 COPY rootfs /
 RUN chmod a+x /etc/cont-init.d/00-init
-COPY run.sh /
-RUN chmod a+x /run.sh
+#COPY run.sh /
+#RUN chmod a+x /run.sh
 #CMD [ "/run.sh" ]
