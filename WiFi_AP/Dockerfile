@@ -15,9 +15,9 @@ RUN service lighttpd restart
 
 RUN rm -Rf /var/www/html
 RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
-COPY rootfs /
-WORKDIR /app
-#COPY run.sh /
+COPY run.sh /
 #WORKDIR /
 RUN chmod a+x /run.sh
+WORKDIR /app
+COPY rootfs /
 CMD [ "/run.sh" ]
