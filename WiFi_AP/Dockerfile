@@ -13,9 +13,9 @@ RUN apt-get install -y php8.2-cgi
 #RUN lighttpd-enable-mod fastcgi-php
 #RUN service lighttpd restart
 
-RUN rm -Rf /var/www/html
-RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
-COPY /rootfs /
+#RUN rm -Rf /var/www/html
+#RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
+#COPY /rootfs /
 
 COPY run.sh /
 RUN chmod a+x /run.sh
