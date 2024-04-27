@@ -1,6 +1,6 @@
 name: Test WiFi AP
 version: dev
-slug: ap_test
+slug: test
 description: WiFi AP based on RaspAP
 url: https://github.com/rmariuso/hassio-addons/tree/main/ap_test
 startup: system
@@ -16,8 +16,8 @@ map:
 init: false
 boot: manual
 host_network: true
-udev: true
-host_dbus: true
+#udev: true
+#host_dbus: true
 privileged:
   - SYS_ADMIN
   - NET_ADMIN
