@@ -24,7 +24,7 @@ RUN mkdir -p /config/wifiap/system
 
 RUN rm -Rf /var/www/html
 RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
-COPY /rootfs /
+COPY rootfs /
 #COPY run.sh /home/run.sh
 RUN chmod a+x /etc/cont-init.d/00-init
 #WORKDIR /app
