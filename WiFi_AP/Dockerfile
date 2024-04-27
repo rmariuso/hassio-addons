@@ -18,6 +18,6 @@ RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html
 COPY run.sh /
 RUN chmod a+x /run.sh
 WORKDIR /app
-COPY rootfs /
-WORKDIR /
+COPY files /
+#WORKDIR /
 CMD [ "/run.sh" ]
