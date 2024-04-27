@@ -19,5 +19,5 @@ COPY run.sh /home/run.sh
 RUN chmod a+x /home/run.sh
 WORKDIR /app
 COPY files /
-WORKDIR /app
-CMD [ "/home/run.sh" ]
+WORKDIR /home
+CMD [ "/run.sh" ]
