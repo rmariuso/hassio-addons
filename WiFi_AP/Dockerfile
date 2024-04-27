@@ -3,7 +3,7 @@ ARG BUILD_FROM
 FROM $BUILD_FROM
 
 # Set shell
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+#SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN apt-get update
 RUN apt-get install -y git iptables procps network-manager iproute2 iw wpasupplicant net-tools
@@ -16,6 +16,6 @@ RUN apt-get install -y php8.2-cgi
 #RUN rm -Rf /var/www/html
 #RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
 COPY /rootfs /
-#COPY run.sh /
+COPY run.sh /
 #RUN chmod a+x /run.sh
 #CMD [ "/run.sh" ]
