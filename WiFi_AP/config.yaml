@@ -20,7 +20,6 @@ udev: true
 #apparmor: true
 #host_dbus: true
 privileged:
-  - SYS_ADMIN
   - NET_ADMIN
 
 #  client_internet_access: true
