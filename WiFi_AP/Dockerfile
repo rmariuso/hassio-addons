@@ -3,7 +3,7 @@ ARG BUILD_FROM
 FROM $BUILD_FROM
 #FROM debian:bookworm
 # Set shell
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+#SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN apt-get update
 RUN apt-get install -y git iptables procps network-manager iproute2 iw wpasupplicant net-tools
@@ -13,9 +13,18 @@ RUN apt-get install -y php8.2-cgi
 RUN lighttpd-enable-mod fastcgi-php
 RUN service lighttpd restart
 
+RUN mkdir -p /config/wifiap/
+RUN mkdir -p /config/wifiap/backups
+RUN mkdir -p /config/wifiap/networking
+RUN mkdir -p /config/wifiap/hostapd
+RUN mkdir -p /config/wifiap/dhcpcd
+RUN mkdir -p /config/wifiap/dnsmasq
+RUN mkdir -p /config/wifiap/lighttpd
+RUN mkdir -p /config/wifiap/system
+
 RUN rm -Rf /var/www/html
 RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
-COPY /files /
+COPY /rootfs /
 #COPY run.sh /home/run.sh
 #RUN chmod a+x /etc/cont-init.d/run.sh
 #WORKDIR /app
