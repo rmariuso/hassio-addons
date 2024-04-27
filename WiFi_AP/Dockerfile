@@ -17,5 +17,5 @@ RUN rm -Rf /var/www/html
 RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
 #COPY run.sh /
 COPY /rootfs /
-RUN chmod a+x /run.sh
+RUN chmod a+x ./run.sh
 CMD [ "/run.sh" ]
