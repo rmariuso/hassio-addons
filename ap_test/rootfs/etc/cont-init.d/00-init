@@ -31,6 +31,12 @@ chown -c root:root /config/wifiap/system/*.sh
 chmod 750 /config/wifiap/system/*.sh
 chown -c root:root /config/wifiap/lighttpd/*.sh
 cp /home/config.php /var/www/html/includes/
+chown -c www-data:www-data /var/www/html/includes/config.php
+chmod 755 /var/www/html/includes/config.php
+cp /home/hostapd.php /var/www/html/includes/
+chown -c www-data:www-data /var/www/html/includes/hostapd.php
+chmod 755 /var/www/html/includes/hostapd.php
+
 cp /var/www/html/config/raspap-bridge-br0.netdev /etc/systemd/network/raspap-bridge-br0.netdev
 cp /var/www/html/config/raspap-br0-member-eth0.network /etc/systemd/network/raspap-br0-member-eth0.network
 cp /home/wifiapd.service /lib/systemd/system
