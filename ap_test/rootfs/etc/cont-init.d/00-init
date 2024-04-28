@@ -28,14 +28,16 @@ if ! bashio::fs.directory_exists /config/wifiap; then
     cp /var/www/html/config/dhcpcd.conf /config/wifiap/dhcpcd/dhcpcd.conf
     cp /home/090_raspap.conf /config/wifiap/dnsmasq/090_raspap.conf
     cp /home/090_wlan0.conf /config/wifiap/dnsmasq/090_wlan0.conf
+#    cp /var/www/html/config/config.php /var/www/html/includes/
+    cp /home/config.php /var/www/html/includes/
     cp /var/www/html/config/defaults.json /config/wifiap/networking/
     cp /var/www/html/config/raspap-bridge-br0.netdev /etc/systemd/network/raspap-bridge-br0.netdev
     cp /var/www/html/config/raspap-br0-member-eth0.network /etc/systemd/network/raspap-br0-member-eth0.network
 fi
 
 echo "Hello world!"
-python3 -m http.server 8000
+#python3 -m http.server 8000
 #lighttpd -f /etc/lighttpd/lighttpd.conf
-#dhcpcd -f "/config/wifiap/dhcpcd/dhcpcd.conf"
-#dnsmasq -C "/config/wifiap/dnsmasq/090_raspap.conf"
-#hostapd -d -B -i wlan0 /config/wifiap/hostapd/hostapd.conf -f /tmp/hostapd.log 1> /dev/null
+dhcpcd -f "/config/wifiap/dhcpcd/dhcpcd.conf"
+dnsmasq -C "/config/wifiap/dnsmasq/090_raspap.conf"
+hostapd -d -B -i wlan0 /config/wifiap/hostapd/hostapd.conf -f /tmp/hostapd.log 1> /dev/null
