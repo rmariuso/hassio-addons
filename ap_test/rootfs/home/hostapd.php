@@ -63,7 +63,7 @@ function DisplayHostAPDConfig()
             }
         } elseif (isset($_POST['StopHotspot'])) {
             $status->addMessage('Attempting to stop hotspot', 'info');
-            exec('sudo /bin/systemctl stop hostapd.service', $return);
+            exec('sudo /bin/service hostapd stop', $return);
             foreach ($return as $line) {
                 $status->addMessage($line, 'info');
             }
@@ -197,7 +197,7 @@ function SaveHostAPDConfig($wpa_array, $enc_types, $modes, $interfaces, $reg_dom
         $status->addMessage('Attempting to set channel outside of permitted range', 'danger');
         $good_input = false;
     }
-    $arrHostapdConf = parse_ini_file('/etc/raspap/hostapd.ini');
+    $arrHostapdConf = parse_ini_file('/config/wifiap/hostapd.ini');
 
     // Check for Bridged AP mode checkbox
     $bridgedEnable = 0;
