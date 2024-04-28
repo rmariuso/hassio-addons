@@ -15,7 +15,7 @@
 #mv /var/www/html/installers/disablelog.sh /config/wifiap/hostapd
 #cp /home/servicestart.sh /config/wifiap/hostapd
 #mv /var/www/html/installers/debuglog.sh /config/wifiap/system
-3chown -c root:root /config/wifiap/hostapd/*.sh
+#chown -c root:root /config/wifiap/hostapd/*.sh
 #chmod 750 /config/wifiap/hostapd/*.sh
 #chown -c root:root /config/wifiap/system/*.sh
 #chmod 750 /config/wifiap/system/*.sh
