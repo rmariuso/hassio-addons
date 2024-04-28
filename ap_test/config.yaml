@@ -12,19 +12,13 @@ arch:
   - armv7
 map: 
   - config:rw
-#ingress: true
+ingress: true
 init: false
 boot: manual
 host_network: true
 udev: true
-#host_dbus: true
 privileged:
   - SYS_ADMIN
   - NET_ADMIN
-#  - SYS_MODULE
-#  - SYS_NICE
-#  - SYS_PTRACE
-#  - SYS_RAWIO
-#  - SYS_RESOURCE
 #ports:
 #  8081/tcp: 8081
