@@ -35,9 +35,18 @@ if ! bashio::fs.directory_exists /config/wifiap; then
     cp /var/www/html/config/raspap-br0-member-eth0.network /etc/systemd/network/raspap-br0-member-eth0.network
 fi
 
+DEFAULT_ROUTE_INTERFACE=$(ip route show default | awk '/^default/ { print $5 }')
+
 echo "Hello world!"
 #python3 -m http.server 8000
 #lighttpd -f /etc/lighttpd/lighttpd.conf
 dhcpcd -f "/config/wifiap/dhcpcd/dhcpcd.conf"
+sleep 3
+
 dnsmasq -C "/config/wifiap/dnsmasq/090_raspap.conf"
+
+iptables-nft -t nat -A POSTROUTING -o $DEFAULT_ROUTE_INTERFACE -j MASQUERADE
+iptables-nft -P FORWARD ACCEPT
+iptables-nft -F FORWARD
+
 hostapd -d -B -i wlan0 /config/wifiap/hostapd/hostapd.conf -f /tmp/hostapd.log 1> /dev/null

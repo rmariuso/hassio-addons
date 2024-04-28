@@ -16,7 +16,7 @@ map:
 init: false
 boot: manual
 host_network: true
-#udev: true
+udev: true
 #host_dbus: true
 privileged:
   - SYS_ADMIN
