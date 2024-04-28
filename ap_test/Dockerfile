@@ -17,7 +17,7 @@ RUN service lighttpd restart
 
 RUN rm -Rf /var/www/html
 RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
-
+USER root
 RUN mkdir -p /config/wifiap
 RUN mkdir -p /config/wifiap/hostapd
 RUN mkdir -p /config/wifiap/lighttpd
