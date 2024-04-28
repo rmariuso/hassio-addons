@@ -20,7 +20,6 @@ if ! bashio::fs.directory_exists /config/wifiap; then
     cp /var/www/html/config/dhcpcd.conf /config/wifiap/dhcpcd/dhcpcd.conf
     cp /home/090_raspap.conf /config/wifiap/dnsmasq/090_raspap.conf
     cp /home/090_wlan0.conf /config/wifiap/dnsmasq/090_wlan0.conf
-    cp /home/config.php /var/www/html/includes/
     cp /var/www/html/config/defaults.json /config/wifiap/networking/
 fi
 
@@ -31,6 +30,7 @@ chmod 750 /config/wifiap/hostapd/*.sh
 chown -c root:root /config/wifiap/system/*.sh
 chmod 750 /config/wifiap/system/*.sh
 chown -c root:root /config/wifiap/lighttpd/*.sh
+cp /home/config.php /var/www/html/includes/
 cp /var/www/html/config/raspap-bridge-br0.netdev /etc/systemd/network/raspap-bridge-br0.netdev
 cp /var/www/html/config/raspap-br0-member-eth0.network /etc/systemd/network/raspap-br0-member-eth0.network
 cp /home/wifiapd.service /lib/systemd/system
