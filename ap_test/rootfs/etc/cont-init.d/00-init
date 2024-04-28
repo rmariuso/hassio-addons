@@ -22,7 +22,7 @@ chmod 750 /config/wifiap/system/*.sh
 cp /home/configport.sh /config/wifiap/lighttpd
 chown -c root:root /config/wifiap/lighttpd/*.sh
 mv /etc/default/hostapd ~/default_hostapd.old
-cp /etc/hostapd/hostapd.conf ~/hostapd.conf.old
+#cp /etc/hostapd/hostapd.conf ~/hostapd.conf.old
 cp /var/www/html/config/hostapd.conf /config/wifiap/hostapd/hostapd.conf
 cp /var/www/html/config/dhcpcd.conf /config/wifiap/dhcpcd/dhcpcd.conf
 cp /home/090_raspap.conf /config/wifiap/dnsmasq/090_raspap.conf
