@@ -17,7 +17,7 @@ RUN service lighttpd restart
 
 RUN rm -Rf /var/www/html
 RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
-USER root
+#USER root
 RUN mkdir -p /config/wifiap
 RUN mkdir -p /config/wifiap/hostapd
 RUN mkdir -p /config/wifiap/lighttpd
@@ -26,7 +26,7 @@ RUN mkdir -p /config/wifiap/networking
 RUN mkdir -p /config/wifiap/dhcpcd
 RUN mkdir -p /config/wifiap/dnsmasq
 RUN mkdir -p /config/wifiap/system
-USER nonrootuser
+#USER nonrootuser
 COPY rootfs /
 RUN chmod a+x /etc/cont-init.d/00-init
 #COPY run.sh /
