@@ -67,8 +67,8 @@ case "$1" in
         if start-stop-daemon --stop --retry 30 --oknodo --quiet \
             --pidfile $PIDFILE --exec $DAEMON
         then
-            killall lighttpd
             rm -f $PIDFILE
+            killall lighttpd
             log_end_msg 0
         else
             log_end_msg 1
