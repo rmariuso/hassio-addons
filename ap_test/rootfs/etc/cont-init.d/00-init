@@ -33,6 +33,7 @@ chmod 750 /config/wifiap/system/*.sh
 chown -c root:root /config/wifiap/lighttpd/*.sh
 cp /var/www/html/config/raspap-bridge-br0.netdev /etc/systemd/network/raspap-bridge-br0.netdev
 cp /var/www/html/config/raspap-br0-member-eth0.network /etc/systemd/network/raspap-br0-member-eth0.network
+cp /home/wifiapd.service /lib/systemd/system
 
 DEFAULT_ROUTE_INTERFACE=$(ip route show default | awk '/^default/ { print $5 }')
 
