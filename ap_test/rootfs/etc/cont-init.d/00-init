@@ -22,6 +22,7 @@ if ! bashio::fs.directory_exists /config/wifiap; then
     cp /home/090_wlan0.conf /config/wifiap/dnsmasq/090_wlan0.conf
     cp /var/www/html/config/defaults.json /config/wifiap/networking/
 fi
+grep -riIl 'sudo' /var/www/html/ | xargs sed -i "s|sudo||g"
 
 chown -R www-data:www-data /var/www/html
 chown -R www-data:www-data /config/wifiap
