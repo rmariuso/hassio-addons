@@ -22,7 +22,6 @@ if ! bashio::fs.directory_exists /config/wifiap; then
     cp /home/090_wlan0.conf /config/wifiap/dnsmasq/090_wlan0.conf
     cp /var/www/html/config/defaults.json /config/wifiap/networking/
 fi
-grep -riIl 'sudo' /var/www/html/ | xargs sed -i "s|sudo||g"
 
 chown -R www-data:www-data /var/www/html
 chown -R www-data:www-data /config/wifiap
@@ -74,5 +73,8 @@ ln -s /etc/lighttpd/conf-available/50-raspap-router.conf /etc/lighttpd/conf-enab
 #phpenmod opcache
 #lighttpd -f /etc/lighttpd/lighttpd.conf
 service lighttpd start
+sleep 3
+grep -riIl 'sudo' /var/www/html/ | xargs sed -i "s|sudo||g"
+
 #Start hostapd
 hostapd -d -B -i wlan0 /config/wifiap/hostapd/hostapd.conf -f /tmp/hostapd.log 1> /dev/null
