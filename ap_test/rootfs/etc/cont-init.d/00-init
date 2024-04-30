@@ -54,8 +54,8 @@ sleep 3
 dnsmasq -C "/config/wifiap/dnsmasq/090_raspap.conf"
 
 #iptables-nft -t nat -A POSTROUTING -o $DEFAULT_ROUTE_INTERFACE -j MASQUERADE
-#iptables-nft -t nat -A POSTROUTING -o end0 -j MASQUERADE
-iptables-nft -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+iptables-nft -t nat -A POSTROUTING -o end0 -j MASQUERADE
+#iptables-nft -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 iptables-nft -P FORWARD ACCEPT
 iptables-nft -F FORWARD
 
