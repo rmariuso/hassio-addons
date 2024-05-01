@@ -1,7 +1,7 @@
 
-ARG BUILD_FROM
-FROM $BUILD_FROM
-#FROM debian:bookworm
+#ARG BUILD_FROM
+#FROM $BUILD_FROM
+FROM debian:bookworm
 
 # Set shell
 #SHELL ["/bin/bash", "-o", "pipefail", "-c"]
