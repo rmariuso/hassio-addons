@@ -12,7 +12,7 @@ RUN apt-get install -y sudo mc hostapd qrencode dnsmasq jq lighttpd vnstat isoqu
 RUN apt-get install -y dhcpcd5
 RUN apt-get install -y python3
 RUN apt-get install -y php8.2-cgi
-
+VOLUME [ "/sys/fs/cgroup" ]
 RUN rm -Rf /var/www/html
 RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
 COPY rootfs /
