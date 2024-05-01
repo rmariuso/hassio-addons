@@ -6,16 +6,16 @@ FROM debian:bookworm
 # Set shell
 #SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-RUN \
-  apk add --no-cache \
-    python3 \
-    dhcpcd
+#RUN \
+#  apk add --no-cache \
+#    python3 \
+#    dhcpcd
 
-#RUN apt-get update
+RUN apt-get update
 #RUN apt-get install -y git iptables iproute2 iw wpasupplicant net-tools
 #RUN apt-get install -y sudo mc hostapd qrencode dnsmasq jq lighttpd vnstat isoquery locales
-#RUN apt-get install -y dhcpcd5
-#RUN apt-get install -y python3
+RUN apt-get install -y dhcpcd
+RUN apt-get install -y python3
 #RUN apt-get install -y php8.2-cgi
 #VOLUME [ "/sys/fs/cgroup" ]
 #RUN rm -Rf /var/www/html
