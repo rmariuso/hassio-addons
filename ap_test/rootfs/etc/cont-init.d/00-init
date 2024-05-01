@@ -44,20 +44,20 @@ chmod 755 /var/www/html/includes/hostapd.php
 DEFAULT_ROUTE_INTERFACE=$(ip route show default | awk '/^default/ { print $5 }')
 
 echo "Hello world!"
-python3 -m http.server 8000
+#python3 -m http.server 8000
 
 #Start dhcpcd
-#dhcpcd -f "/config/wifiap/dhcpcd/dhcpcd.conf"
-#sleep 3
+dhcpcd -f "/config/wifiap/dhcpcd/dhcpcd.conf"
+sleep 3
 
 #Start dnsmasq
-#dnsmasq -C "/config/wifiap/dnsmasq/090_raspap.conf"
+dnsmasq -C "/config/wifiap/dnsmasq/090_raspap.conf"
 
 #iptables-nft -t nat -A POSTROUTING -o $DEFAULT_ROUTE_INTERFACE -j MASQUERADE
-#iptables-nft -t nat -A POSTROUTING -o end0 -j MASQUERADE
+iptables-nft -t nat -A POSTROUTING -o end0 -j MASQUERADE
 #iptables-nft -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-#iptables-nft -P FORWARD ACCEPT
-#iptables-nft -F FORWARD
+iptables-nft -P FORWARD ACCEPT
+iptables-nft -F FORWARD
 
 #Start lighttpd
 #lighttpd-enable-mod fastcgi-php
@@ -73,9 +73,9 @@ ln -s /etc/lighttpd/conf-available/50-raspap-router.conf /etc/lighttpd/conf-enab
 #sed -i -E 's/^;?opcache\.enable\s*=\s*(0|([O|o]ff)|([F|f]alse)|([N|n]o))\s*$/opcache.enable = 1/' /etc/php/8.2/cgi/php.ini
 #phpenmod opcache
 #lighttpd -f /etc/lighttpd/lighttpd.conf
-#service lighttpd start
-#sleep 3
-#grep -riIl 'sudo' /var/www/html/ | xargs sed -i "s|sudo||g"
+service lighttpd start
+sleep 3
+grep -riIl 'sudo' /var/www/html/ | xargs sed -i "s|sudo||g"
 
 #Start hostapd
-#hostapd -d -B -i wlan0 /config/wifiap/hostapd/hostapd.conf -f /tmp/hostapd.log 1> /dev/null
+hostapd -d -B -i wlan0 /config/wifiap/hostapd/hostapd.conf -f /tmp/hostapd.log 1> /dev/null
