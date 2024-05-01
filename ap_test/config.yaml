@@ -22,5 +22,11 @@ udev: true
 privileged:
   - SYS_ADMIN
   - NET_ADMIN
+#  - SYS_MODULE
+  - SYS_NICE
+  - SYS_PTRACE
+#  - SYS_RAWIO
+  - SYS_RESOURCE
+
 #ports:
 #  8081/tcp: 8081
