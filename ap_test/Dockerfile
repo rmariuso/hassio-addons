@@ -1,6 +1,6 @@
 
-#ARG BUILD_FROM
-#FROM $BUILD_FROM
+ARG BUILD_FROM
+FROM $BUILD_FROM
 #FROM debian:bookworm
 
 # Set shell
