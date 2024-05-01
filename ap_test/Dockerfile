@@ -22,6 +22,6 @@ RUN chmod a+x /etc/init.d/lighttpd
 RUN lighttpd-enable-mod fastcgi-php
 #RUN service lighttpd restart
 
-#COPY run.sh /
-#RUN chmod a+x /run.sh
-#CMD [ "/run.sh" ]
+COPY run.sh /
+RUN chmod a+x /run.sh
+CMD [ "/run.sh" ]
