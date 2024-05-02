@@ -13,7 +13,7 @@ FROM $BUILD_FROM
 #RUN apt-get install -y python3
 RUN \
   apk add --no-cache \
-    python3 dhcpcd
+    python3 dhcpcd dnsmasq hostapd
 #RUN apt-get install -y php8.2-cgi
 #VOLUME [ "/sys/fs/cgroup" ]
 #RUN rm -Rf /var/www/html
