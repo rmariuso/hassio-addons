@@ -18,7 +18,7 @@ init: false
 boot: manual
 host_network: true
 #host_dbus: true
-udev: true
+#udev: true
 privileged:
   - SYS_ADMIN
   - NET_ADMIN
