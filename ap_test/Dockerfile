@@ -14,7 +14,7 @@ RUN apt-get install -y python3
 #RUN apt-get install -y python3 dhcpcd dnsmasq hostapd
 #  apk add --no-cache \
 #    apt-get install -y python3 dhcpcd dnsmasq hostapd
-#RUN apt-get install -y php8.2-cgi
+RUN apt-get install -y php8.2-cgi
 VOLUME [ "/sys/fs/cgroup" ]
 RUN rm -Rf /var/www/html
 RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
