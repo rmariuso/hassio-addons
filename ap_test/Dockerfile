@@ -12,7 +12,9 @@ FROM $BUILD_FROM
 #RUN apt-get install -y dhcpcd
 #RUN apt-get install -y python3
 RUN \
-  apk add --no-cache \
+#  apk add --no-cache \
+    apt-get update \
+    apt-get install -y \
     python3 dhcpcd dnsmasq hostapd
 #RUN apt-get install -y php8.2-cgi
 #VOLUME [ "/sys/fs/cgroup" ]
