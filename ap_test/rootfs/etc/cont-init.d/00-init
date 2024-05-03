@@ -43,9 +43,8 @@ chmod 755 /var/www/html/includes/hostapd.php
 #cp /var/www/html/config/raspap-br0-member-eth0.network /etc/systemd/network/raspap-br0-member-eth0.network
 #cp /home/wifiapd.service /lib/systemd/system
 
-DEFAULT_ROUTE_INTERFACE=$(ip route show default | awk '/^default/ { print $5 }')
+#DEFAULT_ROUTE_INTERFACE=$(ip route show default | awk '/^default/ { print $5 }')
 
-echo "Hello world!"
 python3 -m http.server 8000
 
 hostapd -d -B -i wlan0 /config/wifiap/hostapd/hostapd.conf
@@ -64,6 +63,7 @@ iptables-nft -F FORWARD
 
 #vnstatd -d --config "/config/wifiap/vnstat/vnstat.conf"
 
+echo "Hello world!"
 
 #Start lighttpd
 #lighttpd-enable-mod fastcgi-php
