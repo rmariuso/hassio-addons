@@ -61,7 +61,7 @@ iptables-nft -t nat -A POSTROUTING -o end0 -j MASQUERADE
 iptables-nft -P FORWARD ACCEPT
 iptables-nft -F FORWARD
 
-vnstatd -d --config "/config/wifiap/vnstat/vnstat.conf"
+#vnstatd -d --config "/config/wifiap/vnstat/vnstat.conf"
 
 
 #Start lighttpd
@@ -83,4 +83,4 @@ vnstatd -d --config "/config/wifiap/vnstat/vnstat.conf"
 #grep -riIl 'sudo' /var/www/html/ | xargs sed -i "s|sudo||g"
 
 #Start hostapd
-hostapd -d -B -i wlan0 /config/wifiap/hostapd/hostapd.conf -f /tmp/hostapd.log 1> /dev/null
+#hostapd -d -B -i wlan0 /config/wifiap/hostapd/hostapd.conf -f /tmp/hostapd.log 1> /dev/null
