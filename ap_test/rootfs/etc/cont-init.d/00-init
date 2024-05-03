@@ -49,13 +49,13 @@ echo "Hello world!"
 python3 -m http.server 8000
 
 hostapd -d -B -i wlan0 /config/wifiap/hostapd/hostapd.conf
-sleep 3
+sleep 2
 #Start dhcpcd
 dhcpcd -f "/config/wifiap/dhcpcd/dhcpcd.conf" -4AN
-
+sleep 2
 #Start dnsmasq
 dnsmasq -C "/config/wifiap/dnsmasq/090_raspap.conf"
-
+sleep 2
 #iptables-nft -t nat -A POSTROUTING -o $DEFAULT_ROUTE_INTERFACE -j MASQUERADE
 iptables-nft -t nat -A POSTROUTING -o end0 -j MASQUERADE
 ##iptables-nft -t nat -A POSTROUTING -o eth0 -j MASQUERADE
