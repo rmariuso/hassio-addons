@@ -20,8 +20,8 @@ host_network: true
 full_access: true
 #host_dbus: true
 #udev: true
-#privileged:
+privileged:
 #  - SYS_ADMIN
-#  - NET_ADMIN
+  - NET_ADMIN
 #ports:
 #  8081/tcp: 8081
