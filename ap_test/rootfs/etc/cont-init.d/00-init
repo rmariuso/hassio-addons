@@ -45,7 +45,7 @@ chmod 755 /var/www/html/includes/hostapd.php
 
 #DEFAULT_ROUTE_INTERFACE=$(ip route show default | awk '/^default/ { print $5 }')
 
-hostapd -d -B -i wlan0 /config/wifiap/hostapd/hostapd.conf
+hostapd -d -B -i wlan0 /config/wifiap/hostapd/hostapd.conf -f /tmp/hostapd.log 1> /dev/null
 sleep 3
 #Start dhcpcd
 dhcpcd -f "/config/wifiap/dhcpcd/dhcpcd.conf" -4AN
@@ -62,7 +62,7 @@ iptables-nft -F FORWARD
 #vnstatd -d --config "/config/wifiap/vnstat/vnstat.conf"
 
 echo "Hello world!"
-python3 -m http.server 8000
+#python3 -m http.server 8000
 
 #Start lighttpd
 #lighttpd-enable-mod fastcgi-php
