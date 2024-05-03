@@ -17,6 +17,7 @@ RUN \
     git iptables procps-ng iproute2 iw wpa_supplicant net-tools sudo mc hostapd libqrencode-tools dnsmasq jq lighttpd vnstat dhcpcd php82-cgi
 #RUN apt-get install -y php8.2-cgi
 VOLUME [ "/sys/fs/cgroup" ]
+RUN adduser -S www-data -u 1000
 RUN rm -Rf /var/www/html
 RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
 COPY rootfs /
