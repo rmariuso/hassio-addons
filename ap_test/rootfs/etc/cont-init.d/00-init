@@ -46,7 +46,7 @@ chmod 755 /var/www/html/includes/hostapd.php
 DEFAULT_ROUTE_INTERFACE=$(ip route show default | awk '/^default/ { print $5 }')
 
 echo "Hello world!"
-#python3 -m http.server 8000
+python3 -m http.server 8000
 
 #Start dhcpcd
 dhcpcd -f "/config/wifiap/dhcpcd/dhcpcd.conf"  -M4 --noarp
