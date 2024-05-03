@@ -1,20 +1,21 @@
 
-ARG BUILD_FROM
-FROM $BUILD_FROM
+#ARG BUILD_FROM
+#FROM $BUILD_FROM
 #FROM debian:bookworm
 
 # Set shell
 #SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-RUN apt-get update
-RUN apt-get install -y apt-utils git iptables procps iproute2 iw wpasupplicant net-tools
-RUN apt-get install -y sudo mc hostapd qrencode dnsmasq jq lighttpd vnstat isoquery locales
-RUN apt-get install -y dhcpcd5
-RUN apt-get install -y python3
+#RUN apt-get update
+#RUN apt-get install -y apt-utils git iptables procps iproute2 iw wpasupplicant net-tools
+#RUN apt-get install -y sudo mc hostapd qrencode dnsmasq jq lighttpd vnstat isoquery locales
+#RUN apt-get install -y dhcpcd5
+#RUN apt-get install -y python3
 #RUN apt-get install -y python3 dhcpcd dnsmasq hostapd
-#  apk add --no-cache \
-#    apt-get install -y python3 dhcpcd dnsmasq hostapd
-RUN apt-get install -y php8.2-cgi
+RUN \
+  apk add --no-cache \
+    git iptables procps-ng iproute2 iw wpa_supplicant net-tools sudo mc hostapd libqrencode-tools dnsmasq jq lighttpd vnstat python3 dhcpcd php82-cgi
+#RUN apt-get install -y php8.2-cgi
 VOLUME [ "/sys/fs/cgroup" ]
 RUN rm -Rf /var/www/html
 RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
