@@ -48,9 +48,10 @@ DEFAULT_ROUTE_INTERFACE=$(ip route show default | awk '/^default/ { print $5 }')
 echo "Hello world!"
 python3 -m http.server 8000
 
+hostapd -d -B -i wlan0 /config/wifiap/hostapd/hostapd.conf
+sleep 3
 #Start dhcpcd
 dhcpcd -f "/config/wifiap/dhcpcd/dhcpcd.conf" -4AN
-sleep 3
 
 #Start dnsmasq
 dnsmasq -C "/config/wifiap/dnsmasq/090_raspap.conf"
@@ -84,4 +85,3 @@ iptables-nft -F FORWARD
 
 #Start hostapd
 #hostapd -d -B -i wlan0 /config/wifiap/hostapd/hostapd.conf -f /tmp/hostapd.log 1> /dev/null
-hostapd -d -B -i wlan0 /config/wifiap/hostapd/hostapd.conf
