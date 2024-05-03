@@ -14,7 +14,7 @@ FROM $BUILD_FROM
 #RUN apt-get install -y python3 dhcpcd dnsmasq hostapd
 RUN \
   apk add --no-cache \
-    git iptables procps-ng iproute2 iw wpa_supplicant net-tools sudo mc hostapd libqrencode-tools dnsmasq jq lighttpd vnstat python3 dhcpcd php82-cgi
+    git iptables procps-ng iproute2 iw wpa_supplicant net-tools sudo mc hostapd libqrencode-tools dnsmasq jq lighttpd vnstat dhcpcd php82-cgi
 #RUN apt-get install -y php8.2-cgi
 VOLUME [ "/sys/fs/cgroup" ]
 RUN rm -Rf /var/www/html
