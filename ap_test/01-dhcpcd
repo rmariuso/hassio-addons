@@ -1,0 +1,7 @@
+#!/usr/bin/with-contenv bashio
+
+CONFIG="/config/wifiap/dhcpcd/dhcpcd.conf" 
+
+# Run dhcpcd
+bashio::log.info "Starting dhcpcd..." 
+dhcpcd -f "${CONFIG}" -4AN

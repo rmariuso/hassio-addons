@@ -1,0 +1,7 @@
+#!/usr/bin/with-contenv bashio
+
+CONFIG="/config/wifiap/dnsmasq/090_raspap.conf" 
+
+# Run dnsmasq
+bashio::log.info "Starting dnsmasq..." 
+dnsmasq -C "${CONFIG}"

@@ -45,19 +45,19 @@ chmod 755 /var/www/html/includes/hostapd.php
 
 #DEFAULT_ROUTE_INTERFACE=$(ip route show default | awk '/^default/ { print $5 }')
 
-hostapd -d -B -i wlan0 /config/wifiap/hostapd/hostapd.conf -f /tmp/hostapd.log
-sleep 3
+#hostapd -d -B -i wlan0 /config/wifiap/hostapd/hostapd.conf -f /tmp/hostapd.log
+#sleep 3
 #Start dhcpcd
-dhcpcd -f "/config/wifiap/dhcpcd/dhcpcd.conf" -4AN
-sleep 2
+#dhcpcd -f "/config/wifiap/dhcpcd/dhcpcd.conf" -4AN
+#sleep 2
 #Start dnsmasq
-dnsmasq -C "/config/wifiap/dnsmasq/090_raspap.conf"
-sleep 2
+#dnsmasq -C "/config/wifiap/dnsmasq/090_raspap.conf"
+#sleep 2
 #iptables-nft -t nat -A POSTROUTING -o $DEFAULT_ROUTE_INTERFACE -j MASQUERADE
-iptables-nft -t nat -A POSTROUTING -o end0 -j MASQUERADE
+#iptables-nft -t nat -A POSTROUTING -o end0 -j MASQUERADE
 ##iptables-nft -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-iptables-nft -P FORWARD ACCEPT
-iptables-nft -F FORWARD
+#iptables-nft -P FORWARD ACCEPT
+#iptables-nft -F FORWARD
 
 #vnstatd -d --config "/config/wifiap/vnstat/vnstat.conf"
 

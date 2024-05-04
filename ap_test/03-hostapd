@@ -1,0 +1,7 @@
+#!/usr/bin/with-contenv bashio
+
+CONFIG="/config/wifiap/hostapd/hostapd.conf" 
+
+# Run hostapd
+bashio::log.info "Starting hostapd..."
+hostapd -d -B -i wlan0 ${CONFIG}

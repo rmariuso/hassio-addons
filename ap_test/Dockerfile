@@ -21,7 +21,8 @@ VOLUME [ "/sys/fs/cgroup" ]
 RUN rm -Rf /var/www/html
 RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
 COPY rootfs /
-RUN chmod a+x /etc/cont-init.d/00-init
+#RUN chmod a+x /etc/cont-init.d/00-init
+RUN chmod a+x /etc/cont-init.d/*
 RUN chmod a+x /etc/init.d/hostapd
 RUN chmod a+x /etc/init.d/lighttpd
 RUN lighttpd-enable-mod fastcgi-php
