@@ -48,6 +48,7 @@ chmod 755 /var/www/html/includes/hostapd.php
 #hostapd -d -B -i wlan0 /config/wifiap/hostapd/hostapd.conf -f /tmp/hostapd.log
 #sleep 3
 #Start dhcpcd
+
 dhcpcd -f "/config/wifiap/dhcpcd/dhcpcd.conf" -4AN
 sleep 2
 #Start dnsmasq
