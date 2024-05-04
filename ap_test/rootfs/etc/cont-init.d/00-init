@@ -62,8 +62,8 @@ iptables-nft -F FORWARD
 exec /etc/init.d/hostapd start
 #vnstatd -d --config "/config/wifiap/vnstat/vnstat.conf"
 
-echo "Hello world!"
-python3 -m http.server 8000
+#echo "Hello world!"
+#python3 -m http.server 8000
 
 #Start lighttpd
 #lighttpd-enable-mod fastcgi-php
