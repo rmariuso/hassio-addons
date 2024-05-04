@@ -17,7 +17,7 @@ RUN apt-get install -y python3
 #  apk add --no-cache \
 #    git iptables procps-ng iproute2 iw wpa_supplicant net-tools sudo mc hostapd libqrencode-tools dnsmasq jq lighttpd vnstat dhcpcd python3 php82-cgi
 #RUN adduser -S www-data -u 1000
-VOLUME [ "/sys/fs/cgroup" ]
+#VOLUME [ "/sys/fs/cgroup" ]
 RUN rm -Rf /var/www/html
 RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
 COPY rootfs /
