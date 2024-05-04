@@ -59,7 +59,7 @@ iptables-nft -t nat -A POSTROUTING -o end0 -j MASQUERADE
 iptables-nft -P FORWARD ACCEPT
 iptables-nft -F FORWARD
 
-/etc/init.d/hostapd restart
+exec /etc/init.d/hostapd start
 #vnstatd -d --config "/config/wifiap/vnstat/vnstat.conf"
 
 echo "Hello world!"
