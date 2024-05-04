@@ -19,7 +19,7 @@ boot: manual
 host_network: true
 apparmor: true
 full_access: true
-#host_dbus: true
+host_dbus: true
 udev: true
 privileged:
   - SYS_ADMIN
