@@ -3,7 +3,7 @@ version: dev
 slug: test
 description: WiFi AP based on RaspAP
 url: https://github.com/rmariuso/hassio-addons/tree/main/ap_test
-#startup: system
+startup: system
 advanced: true
 panel_icon: mdi:router-wireless
 panel_title: wifi AP
@@ -18,11 +18,11 @@ init: false
 boot: manual
 host_network: true
 apparmor: true
-#full_access: true
+full_access: true
 #host_dbus: true
-udev: true
-privileged:
-  - SYS_ADMIN
-  - NET_ADMIN
+#udev: true
+#privileged:
+#  - SYS_ADMIN
+#  - NET_ADMIN
 #ports:
 #  8081/tcp: 8081
