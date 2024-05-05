@@ -49,7 +49,7 @@ chmod 755 /var/www/html/includes/hostapd.php
 #sleep 3
 #Start dhcpcd
 
-dhcpcd -f "/config/wifiap/dhcpcd/dhcpcd.conf" -4ANZ veth*
+dhcpcd -f "/config/wifiap/dhcpcd/dhcpcd.conf" -4ANLZ veth*
 sleep 2
 #Start dnsmasq
 dnsmasq -C "/config/wifiap/dnsmasq/090_raspap.conf"

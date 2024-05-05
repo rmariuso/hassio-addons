@@ -18,7 +18,9 @@ init: false
 boot: manual
 host_network: true
 apparmor: true
-#full_access: true
+hassio_api: true
+hassio_role: admin
+full_access: true
 #host_dbus: true
 udev: true
 privileged:
