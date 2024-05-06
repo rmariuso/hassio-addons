@@ -21,7 +21,7 @@ RUN apt-get install -y python3
 #VOLUME [ "/sys/fs/cgroup" ]
 RUN rm -Rf /var/www/html
 RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
-
+RUN grep -riIl "/etc/dnsmasq.d" "/var/www/html" | xargs sed -i "s|/etc/dnsmasq.d|/config/wifiap/dnsmasq|g"
 COPY rootfs /
 #RUN chmod a+x /etc/cont-init.d/00-init
 RUN chmod a+x /etc/cont-init.d/*
@@ -29,9 +29,6 @@ RUN chmod a+x /etc/init.d/hostapd
 RUN chmod a+x /etc/init.d/lighttpd
 RUN lighttpd-enable-mod fastcgi-php
 #RUN service lighttpd restart
-WORKDIR /config
-#USER 0
-RUN mkdir -p /cucu/bau
 
 #COPY run.sh /
 #RUN chmod a+x /run.sh
