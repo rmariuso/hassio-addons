@@ -25,7 +25,8 @@ RUN grep -riIl "/etc/raspap" "/var/www/html" | xargs sed -i "s|/etc/raspap|/conf
 RUN grep -riIl "/etc/hostapd" "/var/www/html" | xargs sed -i "s|/etc/hostapd|/config/wifiap/hostapd|g"
 RUN grep -riIl "/etc/dnsmasq.d" "/var/www/html" | xargs sed -i "s|/etc/dnsmasq.d|/config/wifiap/dnsmasq|g"
 RUN grep -riIl "/etc/dhcpcd.conf" "/var/www/html" | xargs sed -i "s|/etc/dhcpcd.conf|/config/wifiap/dhcpcd.conf|g"
-RUN grep -riIl "systemctl" "/var/www/html" | xargs sed -i "s|/bin/systemctl|/sbin/service|g" || xargs sed -i "s| systemctl|/ service|g"
+RUN grep -riIl "systemctl" "/var/www/html" | xargs sed -i "s|/bin/systemctl|/sbin/service|g"
+RUN grep -riIl "systemctl" "/var/www/html" | xargs sed -i "s|systemctl|service|g"
 COPY rootfs /
 #RUN chmod a+x /etc/cont-init.d/00-init
 RUN chmod a+x /etc/cont-init.d/*
