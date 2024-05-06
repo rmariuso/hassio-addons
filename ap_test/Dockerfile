@@ -29,7 +29,7 @@ RUN chmod a+x /etc/init.d/hostapd
 RUN chmod a+x /etc/init.d/lighttpd
 RUN lighttpd-enable-mod fastcgi-php
 #RUN service lighttpd restart
-
+USER 0
 RUN mkdir -p /config/cucu
 
 #COPY run.sh /
