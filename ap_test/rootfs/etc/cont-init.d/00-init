@@ -52,6 +52,20 @@ phpenmod opcache
 #sleep 3
 #Start dhcpcd
 
+#Start lighttpd
+#lighttpd-enable-mod fastcgi-php
+WEBROOT="/var/www/html"
+CONFSRC="$WEBROOT/config/50-raspap-router.conf"
+LTROOT=$(grep "server.document-root" /etc/lighttpd/lighttpd.conf | awk -F '=' '{print $2}' | tr -d " \"")
+HTROOT=${WEBROOT/$LTROOT}
+HTROOT=$(echo "$HTROOT" | sed -e 's/\/$//')
+awk "{gsub(\"/REPLACE_ME\",\"$HTROOT\")}1" $CONFSRC > /tmp/50-raspap-router.conf
+cp /tmp/50-raspap-router.conf /etc/lighttpd/conf-available/
+ln -s /etc/lighttpd/conf-available/50-raspap-router.conf /etc/lighttpd/conf-enabled/50-raspap-router.conf
+#lighttpd -f /etc/lighttpd/lighttpd.conf
+service lighttpd start
+sleep 3
+
 dhcpcd -f "/config/wifiap/dhcpcd/dhcpcd.conf" -4ANLZ veth*
 sleep 2
 #Start dnsmasq
