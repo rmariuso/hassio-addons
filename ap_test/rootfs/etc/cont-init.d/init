@@ -22,7 +22,7 @@ if ! bashio::fs.directory_exists /config/wifiap; then
     cp /var/www/html/config/090_raspap.conf /config/wifiap/dnsmasq/090_raspap.conf
     cp /var/www/html/config/090_wlan0.conf /config/wifiap/dnsmasq/090_wlan0.conf
     cp /var/www/html/config/defaults.json /config/wifiap/networking/
-    cp /home/vnstat.conf /config/wifiap/vnstat
+#    cp /home/vnstat.conf /config/wifiap/vnstat
 fi
 
 chown -R www-data:www-data /var/www/html
@@ -33,11 +33,6 @@ chown -c root:root /config/wifiap/system/*.sh
 chmod 750 /config/wifiap/system/*.sh
 chown -c root:root /config/wifiap/lighttpd/*.sh
 chmod 750 /config/wifiap/lighttpd/*.sh
-#chown -c www-data:www-data /var/www/html/includes/config.php
-#chmod 755 /var/www/html/includes/config.php
-#cp /home/hostapd.php /var/www/html/includes/
-#chown -c www-data:www-data /var/www/html/includes/hostapd.php
-#chmod 755 /var/www/html/includes/hostapd.php
 sed -i -E 's/^session\.cookie_httponly\s*=\s*(0|([O|o]ff)|([F|f]alse)|([N|n]o))\s*$/session.cookie_httponly = 1/' /etc/php/8.2/cgi/php.ini
 sed -i -E 's/^;?opcache\.enable\s*=\s*(0|([O|o]ff)|([F|f]alse)|([N|n]o))\s*$/opcache.enable = 1/' /etc/php/8.2/cgi/php.ini
 phpenmod opcache
@@ -46,45 +41,40 @@ phpenmod opcache
 #cp /var/www/html/config/raspap-br0-member-eth0.network /etc/systemd/network/raspap-br0-member-eth0.network
 #cp /home/wifiapd.service /lib/systemd/system
 
-#DEFAULT_ROUTE_INTERFACE=$(ip route show default | awk '/^default/ { print $5 }')
 
 #hostapd -d -B -i wlan0 /config/wifiap/hostapd/hostapd.conf -f /tmp/hostapd.log
 #sleep 3
 #Start dhcpcd
 
 #Start lighttpd
-#lighttpd-enable-mod fastcgi-php
-WEBROOT="/var/www/html"
-CONFSRC="$WEBROOT/config/50-raspap-router.conf"
-LTROOT=$(grep "server.document-root" /etc/lighttpd/lighttpd.conf | awk -F '=' '{print $2}' | tr -d " \"")
-HTROOT=${WEBROOT/$LTROOT}
-HTROOT=$(echo "$HTROOT" | sed -e 's/\/$//')
-awk "{gsub(\"/REPLACE_ME\",\"$HTROOT\")}1" $CONFSRC > /tmp/50-raspap-router.conf
-cp /tmp/50-raspap-router.conf /etc/lighttpd/conf-available/
+lighttpd-enable-mod fastcgi-php
+#WEBROOT="/var/www/html"
+#CONFSRC="$WEBROOT/config/50-raspap-router.conf"
+#LTROOT=$(grep "server.document-root" /etc/lighttpd/lighttpd.conf | awk -F '=' '{print $2}' | tr -d " \"")
+#HTROOT=${WEBROOT/$LTROOT}
+#HTROOT=$(echo "$HTROOT" | sed -e 's/\/$//')
+#awk "{gsub(\"/REPLACE_ME\",\"$HTROOT\")}1" $CONFSRC > /tmp/50-raspap-router.conf
+#cp /tmp/50-raspap-router.conf /etc/lighttpd/conf-available/
 ln -s /etc/lighttpd/conf-available/50-raspap-router.conf /etc/lighttpd/conf-enabled/50-raspap-router.conf
-#lighttpd -f /etc/lighttpd/lighttpd.conf
-#service lighttpd start
 /etc/init.d/lighttpd start
 sleep 3
 
-#dhcpcd -f "/config/wifiap/dhcpcd/dhcpcd.conf" -4ANLz wlan*
+#Start dhcpcd
 /etc/init.d/dhcpcd start
 sleep 2
+
 #Start dnsmasq
 /etc/init.d/dnsmasq start
-#dnsmasq -C "/config/wifiap/dnsmasq/090_raspap.conf"
 sleep 2
-#iptables-nft -t nat -A POSTROUTING -o $DEFAULT_ROUTE_INTERFACE -j MASQUERADE
-iptables-nft -t nat -A POSTROUTING -o end0 -j MASQUERADE
+
+DEFAULT_ROUTE_INTERFACE=$(ip route show default | awk '/^default/ { print $5 } NR==1{exit}')
+iptables-nft -t nat -A POSTROUTING -o $DEFAULT_ROUTE_INTERFACE -j MASQUERADE
+#iptables-nft -t nat -A POSTROUTING -o end0 -j MASQUERADE
 ##iptables-nft -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 iptables-nft -P FORWARD ACCEPT
 iptables-nft -F FORWARD
 
-exec /etc/init.d/hostapd start
-#vnstatd -d --config "/config/wifiap/vnstat/vnstat.conf"
-
-#echo "Hello world!"
-#python3 -m http.server 8000
+/etc/init.d/vnstat start
 
 #Start hostapd
-#hostapd -d -B -i wlan0 /config/wifiap/hostapd/hostapd.conf -f /tmp/hostapd.log 1> /dev/null
+exec /etc/init.d/hostapd start

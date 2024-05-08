@@ -18,22 +18,20 @@ init: false
 boot: manual
 host_network: true
 apparmor: true
-#full_access: true
-#host_dbus: true
 udev: true
 privileged:
   - SYS_ADMIN
   - NET_ADMIN
-  - BPF
-  - DAC_READ_SEARCH
-  - IPC_LOCK
-  - NET_RAW
-  - PERFMON
-  - SYS_MODULE
-  - SYS_NICE
-  - SYS_PTRACE
-  - SYS_RAWIO
-  - SYS_RESOURCE
+#  - BPF
+#  - DAC_READ_SEARCH
+#  - IPC_LOCK
+#  - NET_RAW
+#  - PERFMON
+#  - SYS_MODULE
+#  - SYS_NICE
+#  - SYS_PTRACE
+#  - SYS_RAWIO
+#  - SYS_RESOURCE
 
 #ports:
 #  8081/tcp: 8081
