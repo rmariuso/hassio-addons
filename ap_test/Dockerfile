@@ -35,6 +35,7 @@ RUN cp /var/www/html/config/config.php /var/www/html/includes/
 COPY rootfs /
 #RUN chmod a+x /etc/cont-init.d/00-init
 RUN chmod a+x /etc/cont-init.d/*
+RUN chmod a+x /etc/init.d/dhcpcd
 RUN chmod a+x /etc/init.d/hostapd
 RUN chmod a+x /etc/init.d/lighttpd
 RUN lighttpd-enable-mod fastcgi-php
