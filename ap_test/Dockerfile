@@ -11,7 +11,7 @@ RUN apt-get install -y apt-utils
 RUN apt-get install -y git iptables procps iproute2 iw wpasupplicant net-tools
 RUN apt-get install -y sudo mc hostapd qrencode dnsmasq jq lighttpd vnstat isoquery locales
 RUN apt-get install -y dhcpcd5
-RUN apt-get install -y php7.4-cgi
+RUN apt-get install -y php8.2-cgi
 #RUN apt-get install -y python3
 #RUN apt-get install -y python3 dhcpcd dnsmasq hostapd
 #RUN \
