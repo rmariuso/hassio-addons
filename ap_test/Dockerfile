@@ -21,7 +21,7 @@ RUN apt-get install -y php7.4-cgi
 #VOLUME [ "/sys/fs/cgroup" ]
 RUN rm -Rf /var/www/html
 RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
-RUN sed "s/RaspAP/WifiAP/1" /var/www/html/config/config.php
+RUN sed -i "s/RaspAP/WifiAP/1" /var/www/html/config/config.php
 RUN grep -riIl "/etc/raspap" "/var/www/html" | xargs sed -i "s|/etc/raspap|/config/wifiap|g"
 RUN grep -riIl "/etc/hostapd" "/var/www/html" | xargs sed -i "s|/etc/hostapd|/config/wifiap/hostapd|g"
 RUN grep -riIl "/etc/dnsmasq.d" "/var/www/html" | xargs sed -i "s|/etc/dnsmasq.d|/config/wifiap/dnsmasq|g"
