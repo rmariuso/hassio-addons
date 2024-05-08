@@ -63,13 +63,16 @@ awk "{gsub(\"/REPLACE_ME\",\"$HTROOT\")}1" $CONFSRC > /tmp/50-raspap-router.conf
 cp /tmp/50-raspap-router.conf /etc/lighttpd/conf-available/
 ln -s /etc/lighttpd/conf-available/50-raspap-router.conf /etc/lighttpd/conf-enabled/50-raspap-router.conf
 #lighttpd -f /etc/lighttpd/lighttpd.conf
-service lighttpd start
+#service lighttpd start
+/etc/init.d/lighttpd start
 sleep 3
 
-dhcpcd -f "/config/wifiap/dhcpcd/dhcpcd.conf" -4ANLZ veth*
+#dhcpcd -f "/config/wifiap/dhcpcd/dhcpcd.conf" -4ANLz wlan*
+/etc/init.d/dhcpcd start
 sleep 2
 #Start dnsmasq
-dnsmasq -C "/config/wifiap/dnsmasq/090_raspap.conf"
+/etc/init.d/dnsmasq start
+#dnsmasq -C "/config/wifiap/dnsmasq/090_raspap.conf"
 sleep 2
 #iptables-nft -t nat -A POSTROUTING -o $DEFAULT_ROUTE_INTERFACE -j MASQUERADE
 iptables-nft -t nat -A POSTROUTING -o end0 -j MASQUERADE
