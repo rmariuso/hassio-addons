@@ -51,8 +51,8 @@ sleep 3
 sleep 2
 
 #Start dnsmasq
-#/etc/init.d/dnsmasq start
-#sleep 2
+/etc/init.d/dnsmasq start
+sleep 2
 
 DEFAULT_ROUTE_INTERFACE=$(ip route show default | awk '/^default/ { print $5 } NR==1{exit}')
 iptables-nft -t nat -A POSTROUTING -o $DEFAULT_ROUTE_INTERFACE -j MASQUERADE
