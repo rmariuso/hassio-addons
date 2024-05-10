@@ -58,7 +58,7 @@ start)
 		log_warning_msg "$NAME is already running"
 		exit 0
 	fi
-	$DHCPCD -f "/config/wifiap/dhcpcd/dhcpcd.conf" -4ANLz wlan*
+	$DHCPCD -f "/config/wifiap/dhcpcd/dhcpcd.conf" -4ANLz wl*
         ;;
 stop)
 	sanity
@@ -67,7 +67,7 @@ stop)
 restart|force-reload)
 	sanity
 	$DHCPCD -x
-	$DHCPCD -f "/config/wifiap/dhcpcd/dhcpcd.conf" -4ANLz wlan*
+	$DHCPCD -f "/config/wifiap/dhcpcd/dhcpcd.conf" -4ANLz wl*
         ;;
 try-restart)
 	if ! pidofproc -p $PIDFILE $DHCPCD >/dev/null; then
@@ -75,7 +75,7 @@ try-restart)
 	else
 		sanity
 		$DHCPCD -x
-		$DHCPCD -f "/config/wifiap/dhcpcd/dhcpcd.conf" -4ANLz wlan*
+		$DHCPCD -f "/config/wifiap/dhcpcd/dhcpcd.conf" -4ANLz wl*
 	fi
 	;;
 reload)
