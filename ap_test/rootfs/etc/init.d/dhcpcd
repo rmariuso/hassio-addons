@@ -16,6 +16,9 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin
 DHCPCD=/usr/sbin/dhcpcd
 NAME=dhcpcd
 PIDFILE=/var/run/dhcpcd.pid
+CONFIGFILE=/config/wifiap/dhcpcd/dhcpcd.conf
+INTERFACE=$( awk '/^interface/ { print $2 }' $CONFIGFILE )
+IPADDRESS=$( awk -F= '/^static ip_address/ { print $2 }' $CONFIGFILE )
 
 test -x $DHCPCD || exit 0
 
@@ -58,24 +61,36 @@ start)
 		log_warning_msg "$NAME is already running"
 		exit 0
 	fi
-	$DHCPCD -f "/config/wifiap/dhcpcd/dhcpcd.conf" -4ANLz wl*
+	ip link set $INTERFACE up
+	ip address add $IPADDRESS dev $INTERFACE
+	$DHCPCD -f $CONFIGFILE -4ANLz $INTERFACE
         ;;
 stop)
 	sanity
+	ip link set $INTERFACE down
+	ip address flush dev $INTERFACE
 	$DHCPCD -x
 	;;
 restart|force-reload)
 	sanity
+	ip link set $INTERFACE down
+	ip address flush dev $INTERFACE
 	$DHCPCD -x
-	$DHCPCD -f "/config/wifiap/dhcpcd/dhcpcd.conf" -4ANLz wl*
+	ip link set $INTERFACE up
+	ip address add $IPADDRESS dev $INTERFACE
+	$DHCPCD -f $CONFIGFILE -4ANLz $INTERFACE
         ;;
 try-restart)
 	if ! pidofproc -p $PIDFILE $DHCPCD >/dev/null; then
 		log_warning_msg "$NAME is not running"
 	else
 		sanity
+		ip link set $INTERFACE down
+		ip address flush dev $INTERFACE
 		$DHCPCD -x
-		$DHCPCD -f "/config/wifiap/dhcpcd/dhcpcd.conf" -4ANLz wl*
+		ip link set $INTERFACE up
+		ip address add $IPADDRESS dev $INTERFACE
+		$DHCPCD -f $CONFIGFILE -4ANLz $INTERFACE
 	fi
 	;;
 reload)
