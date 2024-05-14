@@ -22,6 +22,7 @@ if ! bashio::fs.directory_exists /config/wifiap; then
     cp /var/www/html/config/090_raspap.conf /config/wifiap/dnsmasq/090_raspap.conf
     cp /var/www/html/config/090_wlan0.conf /config/wifiap/dnsmasq/090_wlan0.conf
     cp /var/www/html/config/defaults.json /config/wifiap/networking/
+    mv /etc/vnstat.conf /config/wifiap/vnstat/vnstat.conf
 fi
 
 chown -R www-data:www-data /var/www/html
@@ -56,11 +57,10 @@ sleep 2
 
 DEFAULT_ROUTE_INTERFACE=$(ip route show default | awk '/^default/ { print $5 } NR==1{exit}')
 iptables-nft -t nat -A POSTROUTING -o $DEFAULT_ROUTE_INTERFACE -j MASQUERADE
-#iptables-nft -t nat -A POSTROUTING -o end0 -j MASQUERADE
-#iptables-nft -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 iptables-nft -P FORWARD ACCEPT
 iptables-nft -F FORWARD
 
+#Start vnstat
 /etc/init.d/vnstat start
 
 #Start hostapd

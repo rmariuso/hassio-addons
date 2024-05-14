@@ -27,3 +27,4 @@ RUN chmod a+x /etc/cont-init.d/init
 RUN chmod a+x /etc/init.d/dhcpcd
 RUN chmod a+x /etc/init.d/hostapd
 RUN chmod a+x /etc/init.d/lighttpd
+RUN chmod a+x /etc/init.d/vnstat
