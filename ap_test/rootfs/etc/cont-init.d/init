@@ -22,6 +22,8 @@ if ! bashio::fs.directory_exists /config/wifiap; then
     cp /var/www/html/config/090_raspap.conf /config/wifiap/dnsmasq/090_raspap.conf
     cp /var/www/html/config/090_wlan0.conf /config/wifiap/dnsmasq/090_wlan0.conf
     cp /var/www/html/config/defaults.json /config/wifiap/networking/
+    chown -R vnstat:root /config/wifiap/vnstat
+    vnstatd --initdb
 fi
 
 chown -R www-data:www-data /var/www/html
@@ -61,10 +63,8 @@ iptables-nft -P FORWARD ACCEPT
 iptables-nft -F FORWARD
 
 #Start vnstat
+vnstat --add -i $(awk '/^interface/ { print $2 }' /config/wifiap/dhcpcd/dhcpcd.conf)
 /etc/init.d/vnstat start
-vnstat -i $(awk '/^interface/ { print $2 }' /config/wifiap/dhcpcd/dhcpcd.conf)
-#vnstat -i docker0 --force --remove
-#vnstat -i hassio --force --remove
 
 #Start hostapd
 exec /etc/init.d/hostapd start
