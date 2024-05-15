@@ -63,8 +63,8 @@ iptables-nft -F FORWARD
 #Start vnstat
 /etc/init.d/vnstat start
 vnstat -i $(awk '/^interface/ { print $2 }' /config/wifiap/dhcpcd/dhcpcd.conf)
-vnstat -i docker0 --force --remove
-vnstat -i hassio --force --remove
+#vnstat -i docker0 --force --remove
+#vnstat -i hassio --force --remove
 
 #Start hostapd
 exec /etc/init.d/hostapd start
