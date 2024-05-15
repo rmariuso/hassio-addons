@@ -63,8 +63,8 @@ iptables-nft -P FORWARD ACCEPT
 iptables-nft -F FORWARD
 
 #Start vnstat
-vnstat --add -i $(awk '/^interface/ { print $2 }' /config/wifiap/dhcpcd/dhcpcd.conf)
-/etc/init.d/vnstat start
+#vnstat --add -i $(awk '/^interface/ { print $2 }' /config/wifiap/dhcpcd/dhcpcd.conf)
+#/etc/init.d/vnstat start
 
 #Start hostapd
 exec /etc/init.d/hostapd start
