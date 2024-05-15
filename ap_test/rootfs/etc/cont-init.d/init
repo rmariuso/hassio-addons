@@ -60,8 +60,8 @@ iptables-nft -P FORWARD ACCEPT
 iptables-nft -F FORWARD
 
 #Start vnstat
-#/etc/init.d/vnstat start
-vnstatd --noadd
+/etc/init.d/vnstat start
+#vnstatd --noadd
 vnstat -i $(awk '/^interface/ { print $2 }' /config/wifiap/dhcpcd/dhcpcd.conf)
 #vnstat -i veth* --remove
 #vnstat -i docker0 --remove
