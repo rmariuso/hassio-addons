@@ -32,6 +32,7 @@ chown -c root:root /config/wifiap/system/*.sh
 chmod 750 /config/wifiap/system/*.sh
 chown -c root:root /config/wifiap/lighttpd/*.sh
 chmod 750 /config/wifiap/lighttpd/*.sh
+chown -R vnstat:root /config/wifiap/vnstat
 sed -i -E 's/^session\.cookie_httponly\s*=\s*(0|([O|o]ff)|([F|f]alse)|([N|n]o))\s*$/session.cookie_httponly = 1/' /etc/php/8.2/cgi/php.ini
 sed -i -E 's/^;?opcache\.enable\s*=\s*(0|([O|o]ff)|([F|f]alse)|([N|n]o))\s*$/opcache.enable = 1/' /etc/php/8.2/cgi/php.ini
 phpenmod opcache
