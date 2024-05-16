@@ -66,7 +66,9 @@ iptables-nft -F FORWARD
 if ! vnstat --dbiflist 0 | grep -q $(awk '/^interface/ { print $2 }' /config/wifiap/dhcpcd/dhcpcd.conf); then
   vnstat -i $(awk '/^interface/ { print $2 }' /config/wifiap/dhcpcd/dhcpcd.conf) --add
 fi
-/etc/init.d/vnstat start
+if ls /sys/class/net | grep -q $(awk '/^interface/ { print $2 }' /config/wifiap/dhcpcd/dhcpcd.conf); then
+  /etc/init.d/vnstat start
+fi
 
 #Start hostapd
 exec /etc/init.d/hostapd start
