@@ -61,8 +61,8 @@ start)
 		log_warning_msg "$NAME is already running"
 		exit 0
 	fi
-	ip link set $INTERFACE down
-	ip address flush dev $INTERFACE
+#	ip link set $INTERFACE down
+#	ip address flush dev $INTERFACE
 	ip link set $INTERFACE up
 	ip address add $IPADDRESS dev $INTERFACE
 	$DHCPCD -f $CONFIGFILE -4ANLz $INTERFACE
