@@ -17,8 +17,8 @@ ingress: true
 init: false
 boot: manual
 host_network: true
-apparmor: true
-#udev: true
+#apparmor: true
+udev: true
 privileged:
   - SYS_ADMIN
   - NET_ADMIN
