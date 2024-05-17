@@ -61,25 +61,25 @@ start)
 		log_warning_msg "$NAME is already running"
 		exit 0
 	fi
-#	ip link set $INTERFACE down
-#	ip address flush dev $INTERFACE
-#	ip link set $INTERFACE up
-#	ip address add $IPADDRESS dev $INTERFACE
+	ip link set $INTERFACE down
+	ip address flush dev $INTERFACE
+	ip link set $INTERFACE up
+	ip address add $IPADDRESS dev $INTERFACE
 	$DHCPCD -f $CONFIGFILE -4ANLz $INTERFACE
         ;;
 stop)
 	sanity
-#	ip link set $INTERFACE down
-#	ip address flush dev $INTERFACE
+	ip link set $INTERFACE down
+	ip address flush dev $INTERFACE
 	$DHCPCD -x
 	;;
 restart|force-reload)
 	sanity
-#	ip link set $INTERFACE down
-#	ip address flush dev $INTERFACE
+	ip link set $INTERFACE down
+	ip address flush dev $INTERFACE
 	$DHCPCD -x
-#	ip link set $INTERFACE up
-#	ip address add $IPADDRESS dev $INTERFACE
+	ip link set $INTERFACE up
+	ip address add $IPADDRESS dev $INTERFACE
 	$DHCPCD -f $CONFIGFILE -4ANLz $INTERFACE
         ;;
 try-restart)
@@ -87,11 +87,11 @@ try-restart)
 		log_warning_msg "$NAME is not running"
 	else
 		sanity
-#		ip link set $INTERFACE down
-#		ip address flush dev $INTERFACE
+		ip link set $INTERFACE down
+		ip address flush dev $INTERFACE
 		$DHCPCD -x
-#		ip link set $INTERFACE up
-#		ip address add $IPADDRESS dev $INTERFACE
+		ip link set $INTERFACE up
+		ip address add $IPADDRESS dev $INTERFACE
 		$DHCPCD -f $CONFIGFILE -4ANLz $INTERFACE
 	fi
 	;;
