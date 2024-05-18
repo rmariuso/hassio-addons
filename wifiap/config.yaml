@@ -20,8 +20,6 @@ udev: true
 privileged:
   - SYS_ADMIN
   - NET_ADMIN
-#ports:
-#  8081/tcp: 8081
 #options:
 #  RASPAP_SSID: raspap-webgui
 #  RASPAP_SSID_PASS: ChangeMe

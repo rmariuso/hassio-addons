@@ -12,6 +12,10 @@ RUN apt-get install -y php8.2-cgi
 RUN rm -Rf /var/www/html
 RUN git clone https://github.com/RaspAP/raspap-webgui /var/www/html 
 RUN sed -i "s/RaspAP/WifiAP/1" /var/www/html/config/config.php
+RUN sed -i "s/'RASPI_AUTH_ENABLED', true/'RASPI_AUTH_ENABLED', false/1" /var/www/html/config/config.php
+RUN sed -i "s/'RASPI_WIFICLIENT_ENABLED', true/'RASPI_WIFICLIENT_ENABLED', false/1" /var/www/html/config/config.php
+RUN sed -i "s/'RASPI_CONFAUTH_ENABLED', true/'RASPI_CONFAUTH_ENABLED', false/1" /var/www/html/config/config.php
+RUN sed -i "s/'RASPI_VNSTAT_ENABLED', true/'RASPI_VNSTAT_ENABLED', false/1" /var/www/html/config/config.php
 RUN grep -riIl "hostname -f" "/var/www/html/" | xargs sed -i "s|hostname -f|hostname|g"
 RUN grep -riIl "/etc/raspap" "/var/www/html" | xargs sed -i "s|/etc/raspap|/config/wifiap|g"
 RUN grep -riIl "/etc/hostapd" "/var/www/html" | xargs sed -i "s|/etc/hostapd|/config/wifiap/hostapd|g"
