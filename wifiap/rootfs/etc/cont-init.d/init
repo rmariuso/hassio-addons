@@ -23,6 +23,7 @@ if ! bashio::fs.directory_exists /config/wifiap; then
     cp /var/www/html/config/090_wlan0.conf /config/wifiap/dnsmasq/090_wlan0.conf
     cp /var/www/html/config/defaults.json /config/wifiap/networking/
     chown -R vnstat:root /config/wifiap/vnstat
+    /usr/bin/vnstatd --initdb
 fi
 
 chown -R www-data:www-data /var/www/html
@@ -66,7 +67,6 @@ if ls /sys/class/net | grep -q $(awk '/^interface/ { print $2 }' /config/wifiap/
     if ! vnstat --dbiflist 0 | grep -q $(awk '/^interface/ { print $2 }' /config/wifiap/dhcpcd/dhcpcd.conf); then
         vnstat -i $(awk '/^interface/ { print $2 }' /config/wifiap/dhcpcd/dhcpcd.conf) --add
     fi
-    vnstatd --initdb
     /etc/init.d/vnstat start
 fi
 
