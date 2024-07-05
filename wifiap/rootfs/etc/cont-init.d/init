@@ -69,7 +69,7 @@ iptables-nft -F FORWARD
 #        vnstat -i $(awk '/^interface/ { print $2 }' /config/wifiap/dhcpcd/dhcpcd.conf) --add
 #    fi
 #fi
-vnstatd
+vnstatd -d --config /etc/vnstat.conf
 #/etc/init.d/vnstat start
 
 #Start hostapd
