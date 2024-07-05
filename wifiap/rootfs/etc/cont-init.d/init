@@ -69,6 +69,7 @@ if ls /sys/class/net | grep -q $(awk '/^interface/ { print $2 }' /config/wifiap/
         vnstat -i $(awk '/^interface/ { print $2 }' /config/wifiap/dhcpcd/dhcpcd.conf) --add
     fi
 fi
+vnstatd
 #/etc/init.d/vnstat start
 
 #Start hostapd
