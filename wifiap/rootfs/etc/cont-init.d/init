@@ -24,6 +24,7 @@ if ! bashio::fs.directory_exists /config/wifiap; then
     cp /var/www/html/config/defaults.json /config/wifiap/networking/
     chown -R vnstat:root /config/wifiap/vnstat
 #    vnstatd --initdb
+    vnstatd
 fi
 
 chown -R www-data:www-data /var/www/html
@@ -64,13 +65,13 @@ iptables-nft -F FORWARD
 
 #Start vnstat
 
-#if ls /sys/class/net | grep -q $(awk '/^interface/ { print $2 }' /config/wifiap/dhcpcd/dhcpcd.conf); then
-#    if ! vnstat --dbiflist 0 | grep -q $(awk '/^interface/ { print $2 }' /config/wifiap/dhcpcd/dhcpcd.conf); then
-#        vnstat -i $(awk '/^interface/ { print $2 }' /config/wifiap/dhcpcd/dhcpcd.conf) --add
-#    fi
-#fi
+if ls /sys/class/net | grep -q $(awk '/^interface/ { print $2 }' /config/wifiap/dhcpcd/dhcpcd.conf); then
+    if ! vnstat --dbiflist 0 | grep -q $(awk '/^interface/ { print $2 }' /config/wifiap/dhcpcd/dhcpcd.conf); then
+        vnstat -i $(awk '/^interface/ { print $2 }' /config/wifiap/dhcpcd/dhcpcd.conf) --add
+    fi
+fi
 #vnstatd -d --config /etc/vnstat.conf
-#/etc/init.d/vnstat start
+/etc/init.d/vnstat start
 
 #Start hostapd
 exec /etc/init.d/hostapd start
