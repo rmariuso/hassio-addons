@@ -70,7 +70,7 @@ iptables-nft -F FORWARD
 #    fi
 #fi
 #    vnstatd --initdb
-vnstatd --initdb --config /etc/vnstat.conf
+#vnstatd --initdb --config /etc/vnstat.conf
 #/etc/init.d/vnstat start
 
 #Start hostapd
