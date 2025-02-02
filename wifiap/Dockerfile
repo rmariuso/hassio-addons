@@ -10,7 +10,7 @@ RUN apt-get install -y dhcpcd5
 RUN apt-get install -y php8.2-cgi
 #VOLUME [ "/sys/fs/cgroup" ]
 RUN rm -Rf /var/www/html
-RUN git clone -b 3.1.7 https://github.com/RaspAP/raspap-webgui /var/www/html 
+RUN git clone -b 3.2.4 https://github.com/RaspAP/raspap-webgui /var/www/html 
 RUN sed -i "s/RaspAP/WiFi AP/1" /var/www/html/config/config.php
 RUN sed -i "s/'RASPI_AUTH_ENABLED', true/'RASPI_AUTH_ENABLED', false/1" /var/www/html/config/config.php
 RUN sed -i "s/'RASPI_WIFICLIENT_ENABLED', true/'RASPI_WIFICLIENT_ENABLED', false/1" /var/www/html/config/config.php
