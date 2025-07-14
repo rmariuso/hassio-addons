@@ -23,7 +23,8 @@ if ! bashio::fs.directory_exists /config/wifiap; then
     cp /var/www/html/config/090_raspap.conf /config/wifiap/dnsmasq/090_raspap.conf
     cp /var/www/html/config/090_wlan0.conf /config/wifiap/dnsmasq/090_wlan0.conf
     cp /tmp/wifiap/dnsmasq/090_wlu1i2.conf /config/wifiap/dnsmasq/090_wlu1i2.conf
-    cp /var/www/html/config/defaults.json /config/wifiap/networking/
+#    cp /var/www/html/config/defaults.json /config/wifiap/networking/
+    cp /tmp/networking/defaults.json /config/wifiap/networking/
     chown -R vnstat:root /config/wifiap/vnstat
 #    vnstatd --initdb
 fi
