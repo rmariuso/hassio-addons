@@ -50,15 +50,15 @@ phpenmod opcache
 lighttpd-enable-mod fastcgi-php
 ln -s /etc/lighttpd/conf-available/50-raspap-router.conf /etc/lighttpd/conf-enabled/50-raspap-router.conf
 /etc/init.d/lighttpd start
-sleep 3
+sleep 5
 
 #Start dhcpcd
 /etc/init.d/dhcpcd start
-sleep 2
+sleep 5
 
 #Start dnsmasq
 /etc/init.d/dnsmasq start
-sleep 2
+sleep 5
 
 DEFAULT_ROUTE_INTERFACE=$(ip route show default | awk '/^default/ { print $5 } NR==1{exit}')
 iptables-nft -t nat -A POSTROUTING -o $DEFAULT_ROUTE_INTERFACE -j MASQUERADE
