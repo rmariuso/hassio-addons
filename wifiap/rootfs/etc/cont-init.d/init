@@ -18,13 +18,13 @@ if ! bashio::fs.directory_exists /config/wifiap; then
     cp /var/www/html/installers/configport.sh /config/wifiap/lighttpd
     mv /etc/default/hostapd ~/default_hostapd.old
     cp /var/www/html/config/hostapd.conf /config/wifiap/hostapd/hostapd.conf
-#    cp /var/www/html/config/dhcpcd.conf /config/wifiap/dhcpcd/dhcpcd.conf
-    cp /tmp/wifiap/dhcpcd/dhcpcd.conf /config/wifiap/dhcpcd/dhcpcd.conf
+    cp /var/www/html/config/dhcpcd.conf /config/wifiap/dhcpcd/dhcpcd.conf
+#    cp /tmp/wifiap/dhcpcd/dhcpcd.conf /config/wifiap/dhcpcd/dhcpcd.conf
     cp /var/www/html/config/090_raspap.conf /config/wifiap/dnsmasq/090_raspap.conf
     cp /var/www/html/config/090_wlan0.conf /config/wifiap/dnsmasq/090_wlan0.conf
-    cp /tmp/wifiap/dnsmasq/090_wlu1i2.conf /config/wifiap/dnsmasq/090_wlu1i2.conf
-#    cp /var/www/html/config/defaults.json /config/wifiap/networking/
-    cp /tmp/wifiap/networking/defaults.json /config/wifiap/networking/defaults.json
+#    cp /tmp/wifiap/dnsmasq/090_wlu1i2.conf /config/wifiap/dnsmasq/090_wlu1i2.conf
+    cp /var/www/html/config/defaults.json /config/wifiap/networking/
+#    cp /tmp/wifiap/networking/defaults.json /config/wifiap/networking/defaults.json
     chown -R vnstat:root /config/wifiap/vnstat
 #    vnstatd --initdb
 fi
